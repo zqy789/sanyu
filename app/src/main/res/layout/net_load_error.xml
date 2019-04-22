@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/y205"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@mipmap/ic_launcher" />-->
+
+
+    <TextView
+        android:id="@+id/error_text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/base_dimen_178"
+        android:gravity="center"
+        android:text="@string/net_connect_error_tip1"
+        android:textColor="@color/color_black_3"
+        android:textSize="@dimen/base_text_size_20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/base_dimen_141"
+        android:gravity="center"
+        android:text="@string/net_connect_error_tip2" />
+
+    <Button
+        android:id="@+id/net_error_btn"
+        android:layout_width="@dimen/base_dimen_156"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/base_dimen_65"
+        android:background="@null"
+        android:text="@string/net_connect_error_btn" />
+
+
+</RelativeLayout>

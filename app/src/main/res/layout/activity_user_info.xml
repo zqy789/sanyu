@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/project_base_color_background1"
+    android:orientation="vertical">
+
+    <com.ybkj.syzs.deliver.ui.view.MyActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="个人信息" />
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/base_dimen_10"-->
+    <!--android:background="@color/base_white">-->
+
+    <!--<TextView-->
+    <!--style="@style/function_text"-->
+    <!--android:layout_height="@dimen/base_dimen_65"-->
+    <!--android:layout_marginLeft="@dimen/base_dimen_15"-->
+    <!--android:text="头像" />-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="@dimen/base_dimen_46"-->
+    <!--android:layout_height="@dimen/base_dimen_46"-->
+    <!--android:src="@mipmap/ic_avatar_default"-->
+    <!--android:layout_marginRight="@dimen/base_dimen_15"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"/>-->
+    <!--</RelativeLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/function_text"
+            android:drawableRight="@null"
+            android:paddingLeft="@dimen/base_dimen_15"
+            android:text="账号" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            style="@style/auth_common_text9"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base_dimen_15" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_dimen_10">
+
+        <TextView
+            android:id="@+id/tv_change_phone"
+            style="@style/function_text"
+            android:paddingLeft="@dimen/base_dimen_15"
+            android:text="修改绑定手机号" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/auth_common_text9"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base_dimen_35" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_change_password"
+        style="@style/function_text"
+        android:paddingLeft="@dimen/base_dimen_15"
+        android:text="修改登录密码" />
+
+    <TextView
+        android:id="@+id/tv_update"
+        style="@style/function_text"
+        android:layout_marginTop="@dimen/base_dimen_10"
+        android:paddingLeft="@dimen/base_dimen_15"
+        android:text="APP版本更新" />
+
+    <TextView
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_dimen_55"
+        android:layout_marginTop="@dimen/base_dimen_18"
+        android:background="@color/base_white"
+        android:gravity="center"
+        android:text="退出登录"
+        android:textColor="@color/project_base_color_green" />
+
+</LinearLayout>

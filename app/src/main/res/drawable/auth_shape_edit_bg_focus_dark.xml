@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+    <item>
+        <selector>
+            <item android:state_focused="true">
+                <shape android:shape="rectangle">
+                    <stroke
+                        android:width="@dimen/base_dimen_0_5"
+                        android:color="@color/auth_color_line_focused" />
+                </shape>
+            </item>
+            <item android:state_focused="false">
+                <shape android:shape="rectangle">
+                    <stroke
+                        android:width="@dimen/base_dimen_0_5"
+                        android:color="@color/auth_color_line_focused" />
+                </shape>
+            </item>
+        </selector>
+
+    </item>
+
+    <item android:bottom="@dimen/base_dimen_1">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/base_white" />
+        </shape>
+    </item>
+</layer-list>

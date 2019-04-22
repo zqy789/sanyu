@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/base_dimen_315"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="@dimen/base_dimen_295"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/base_dimen_10"
+        android:layout_marginTop="@dimen/base_dimen_45"
+        android:layout_marginRight="@dimen/base_dimen_10"
+        android:background="@drawable/project_base_white_angle8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base_dimen_33"
+            android:includeFontPadding="false"
+            android:text="发现新版本"
+            android:textColor="@color/auth_color_text_3"
+            android:textSize="@dimen/base_text_size_24" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base_dimen_20"
+            android:includeFontPadding="false"
+            android:textColor="@color/auth_color_666"
+            android:textSize="@dimen/base_text_size_15" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_dimen_20"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="@dimen/base_dimen_7"
+            android:textColor="@color/auth_color_666"
+            android:textSize="@dimen/base_text_size_15" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dimen_42"
+            android:layout_margin="@dimen/base_dimen_34">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progress="100"
+                android:progressDrawable="@drawable/progress_version" />
+
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="立即升级"
+                android:textColor="@color/base_white"
+                android:textSize="@dimen/base_text_size_18" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/base_dimen_88"
+        android:layout_height="@dimen/base_dimen_97"
+        android:src="@mipmap/ic_leaf" />
+</RelativeLayout>

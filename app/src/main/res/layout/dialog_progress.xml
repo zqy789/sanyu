@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_dimen_225"
+        android:layout_marginTop="@dimen/base_dimen_33">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/base_dimen_20"
+            android:background="@drawable/shape_white_corner14_bottom" />
+
+        <RelativeLayout
+            android:id="@+id/layout_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dimen_117"
+            android:background="@mipmap/bg_update_dialog_top">
+
+            <TextView
+                android:id="@+id/version_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/base_dimen_43"
+                android:textColor="@color/base_white"
+                android:textSize="@dimen/base_text_size_14"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_top"
+            android:layout_centerHorizontal="true"
+            android:text="正在下载更新"
+            android:textColor="@color/color_text_hint"
+            android:textSize="@dimen/base_text_size_14" />
+
+        <com.ybkj.syzs.deliver.ui.view.PlaneProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:layout_marginLeft="@dimen/base_dimen_16"
+            android:layout_marginTop="@dimen/base_dimen_20"
+            android:layout_marginRight="@dimen/base_dimen_16"
+            android:background="@color/base_white" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/base_dimen_40"
+        android:layout_height="@dimen/base_dimen_74"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_white_airplane" />
+</RelativeLayout>

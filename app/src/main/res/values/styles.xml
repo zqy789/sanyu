@@ -1,0 +1,252 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/color_red_1</item>
+        <item name="android:windowBackground">@color/activity_background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="whiteTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="colorPrimary">@color/base_white</item>
+        <item name="colorPrimaryDark">@color/base_white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ImageTranslucentTheme" parent="AppTheme">
+        <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+    </style>
+
+    <style name="mainActivityTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <!-- 弹出框公共样式-->
+    <style name="common_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@drawable/shape_dialog_bg</item><!--背景透明-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item><!-- 模糊 -->
+    </style>
+    <!--半透明dialog-->
+    <style name="translucent_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+
+    <!-- 底部弹出框出现动画样式-->
+    <style name="choose_item_dialog_animation">
+        <!--动画的style-->
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_exit</item>
+    </style>
+    <!-- APK更新弹出框样式-->
+    <style name="update_dialog" parent="common_dialog">
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+    </style>
+
+    <!--图片放大弹出框样式 -->
+    <style name="img_dialog" parent="common_dialog">
+        <item name="android:windowBackground">@color/black</item><!--背景透明-->
+    </style>
+
+
+    <!--line样式-->
+    <style name="line_h">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_dimen_0_5</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+
+    <!--line样式-->
+    <style name="line_v">
+        <item name="android:layout_width">@dimen/base_dimen_0_5</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+
+    <!-- 登录等信息输入框统一样式-->
+    <style name="auth_login_edit_text_style" parent="auth_edit_text_style">
+        <item name="android:layout_marginLeft">@dimen/base_dimen_24</item>
+        <item name="android:layout_marginRight">@dimen/base_dimen_24</item>
+        <item name="android:maxLength">16</item>
+        <item name="android:textSize">@dimen/base_text_size_16</item>
+        <item name="android:digits">@string/text_digits</item>
+    </style>
+
+    <style name="auth_edit_text_style2" parent="auth_edit_text_style">
+        <item name="android:background">@drawable/auth_shape_edit_bg</item>
+    </style>
+
+    <!-- TextView 统一样式-->
+    <style name="auth_text_style_base">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- TextView 统一样式-->
+    <style name="auth_text_login" parent="auth_text_style_base">
+        <item name="android:textSize">@dimen/base_text_size_24</item>
+        <item name="android:textColor">@color/auth_color_text_3</item>
+    </style>
+
+    <!-- 输入框样式-->
+    <style name="auth_edit_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_dimen_44</item>
+        <item name="android:textSize">@dimen/base_text_size_14</item>
+        <item name="android:textColor">@color/auth_color_text_3</item>
+        <item name="android:textColorHint">@color/auth_color_Da</item>
+        <item name="android:background">@drawable/auth_shape_edit_bg_focus_dark</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+    <!-- #999999  12sp-->
+    <style name="auth_12_999" parent="auth_text_style_base">
+        <item name="android:textSize">@dimen/base_dimen_12</item>
+        <item name="android:textColor">@color/auth_color_999</item>
+        <item name="android:layout_marginRight">@dimen/base_dimen_21</item>
+        <item name="android:layout_marginTop">@dimen/base_dimen_11</item>
+    </style>
+
+    <style name="auth_btn" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/base_white</item>
+        <item name="android:layout_height">@dimen/base_dimen_36</item>
+        <item name="android:textSize">@dimen/base_text_size_14</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--登录按钮-->
+    <style name="auth_btn_login_shape" parent="auth_btn">
+        <!--<item name="android:background">@mipmap/icon_button_bg</item>-->
+        <item name="android:background">@drawable/auth_login_style</item>
+        <item name="android:layout_height">@dimen/base_dimen_47</item>
+        <item name="android:layout_width">@dimen/base_dimen_320</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/base_dimen_30</item>
+    </style>
+    <!--#99CE66  14sp-->
+    <style name="auth_register" parent="auth_text_style_base">
+        <item name="android:textSize">@dimen/base_text_size_14</item>
+        <item name="android:textColor">@color/project_base_color_green</item>
+    </style>
+
+    <!-- 标题-->
+    <style name="auth_text_tittle">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/auth_color_121</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- #4A4A4A  14sp-->
+    <style name="auth_14_a4a" parent="auth_text_style_base">
+        <item name="android:textSize">@dimen/base_text_size_14</item>
+        <item name="android:textColor">@color/auth_color_a4a</item>
+    </style>
+
+    <style name="auth_common_text3">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/auth_color_text_3</item>
+        <item name="android:textSize">@dimen/base_text_size_15</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="auth_common_text3_big" parent="auth_common_text3">
+        <item name="android:textSize">@dimen/base_text_size_18</item>
+    </style>
+
+    <style name="auth_common_text3_large" parent="auth_common_text3">
+        <item name="android:textSize">@dimen/base_text_size_24</item>
+    </style>
+
+    <style name="auth_common_text9">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/auth_color_999</item>
+        <item name="android:textSize">@dimen/base_text_size_15</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">@dimen/base_dimen_7</item>
+    </style>
+
+    <style name="auth_common_text9_small" parent="auth_common_text9">
+        <item name="android:textSize">@dimen/base_text_size_12</item>
+        <item name="android:lineSpacingExtra">@dimen/base_dimen_5</item>
+    </style>
+
+    <style name="auth_common_text6">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/auth_color_666</item>
+        <item name="android:textSize">@dimen/base_text_size_15</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="auth_common_text_white">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/base_white</item>
+        <item name="android:textSize">@dimen/base_text_size_15</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="project_base_common_tab">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_dimen_50</item>
+        <item name="xTabIndicatorHeight">@dimen/base_dimen_3</item>
+        <item name="xTabIndicatorWidth">@dimen/base_dimen_47</item>
+        <item name="xTabPaddingBottom">@dimen/base_dimen_4</item>
+        <item name="xTabSelectedTextColor">@color/auth_color_text_3</item>
+        <item name="xTabSelectedTextSize">@dimen/base_text_size_15</item>
+        <item name="xTabTextColor">@color/auth_color_999</item>
+        <item name="xTabTextSelectedBold">true</item>
+        <item name="xTabTextSize">@dimen/base_text_size_15</item>
+    </style>
+
+    <style name="auth_common_btn" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/base_white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_dimen_44</item>
+        <item name="android:textSize">@dimen/base_text_size_15</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_green_round</item>
+    </style>
+
+    <style name="project_base_time_sort_btn">
+        <item name="android:layout_width">@dimen/base_dimen_51</item>
+        <item name="android:layout_height">@dimen/base_dimen_21</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/base_text_size_11</item>
+        <item name="android:layout_marginLeft">@dimen/base_dimen_5</item>
+        <item name="android:layout_marginRight">@dimen/base_dimen_5</item>
+        <item name="android:textColor">@drawable/project_base_time_sort_text</item>
+        <item name="android:background">@drawable/project_base_time_sort_bg_green</item>
+    </style>
+
+    <style name="function_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_dimen_55</item>
+        <item name="android:background">@drawable/project_base_white_with_line</item>
+        <item name="android:paddingRight">@dimen/base_dimen_8</item>
+        <item name="android:textColor">@color/auth_color_text_3</item>
+        <item name="android:textSize">@dimen/base_text_size_15</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/base_dimen_8</item>
+        <item name="android:drawableRight">@mipmap/ic_next</item>
+    </style>
+</resources>

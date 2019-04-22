@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/scan_code_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/scan_bg" />
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dimen_45"
+            android:layout_marginTop="@dimen/base_dimen_30">
+
+            <!--<View-->
+            <!--android:id="@+id/view1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/y1" />-->
+            <ImageView
+                android:id="@+id/scan_code_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="18dp"
+                android:paddingRight="16dp"
+                android:src="@mipmap/head_back_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="扫描快递单号"
+                android:textColor="@color/base_white"
+                android:textSize="@dimen/base_text_size_20" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/scan_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:text="二维码/条形码 识别区"
+            android:textColor="@color/base_white"
+            android:textSize="13sp" />
+
+    </FrameLayout>
+</LinearLayout>

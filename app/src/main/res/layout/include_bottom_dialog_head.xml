@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base_dimen_56">
+
+    <ImageView
+        android:id="@+id/bottom_dialog_close"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:paddingLeft="@dimen/base_dimen_14"
+        android:paddingRight="@dimen/base_dimen_14"
+        android:src="@mipmap/ic_close_1" />
+
+    <TextView
+        android:id="@+id/bottom_dialog_tittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:clickable="false"
+        android:singleLine="true"
+        android:textColor="@color/color_black_1"
+        android:textSize="@dimen/base_text_size_16" />
+
+
+    <TextView
+        android:id="@+id/bottom_dialog_conform"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="@dimen/base_dimen_14"
+        android:text="@string/confirm"
+        android:visibility="gone" />
+
+    <View
+        style="@style/line_h"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
+

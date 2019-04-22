@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/scan_code_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/scan_bg" />
+
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dimen_45"
+            android:layout_marginTop="@dimen/base_dimen_30">
+
+            <!--<View-->
+            <!--android:id="@+id/view1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/y1" />-->
+            <ImageView
+                android:id="@+id/scan_code_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="18dp"
+                android:paddingRight="16dp"
+                android:src="@mipmap/head_back_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="录入防伪码"
+                android:textColor="@color/base_white"
+                android:textSize="@dimen/base_text_size_20" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/scan_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:text="二维码/条形码 识别区"
+            android:textColor="@color/base_white"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base_dimen_40"
+            android:layout_marginRight="@dimen/base_dimen_40">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="@dimen/base_dimen_140"
+                android:layout_height="@dimen/base_dimen_36"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/base_dimen_364"
+                android:background="@drawable/shape_white_round_stroke"
+                android:text="录入完成"
+                android:textColor="@color/base_white" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/base_white"
+            android:paddingLeft="@dimen/base_dimen_20"
+            android:paddingRight="@dimen/base_dimen_20"
+            android:paddingBottom="@dimen/base_dimen_21">
+
+            <TextView
+                android:id="@+id/orderNo_tv"
+                style="@style/auth_common_text3"
+                android:layout_marginTop="@dimen/base_dimen_19"
+                android:textSize="@dimen/base_text_size_14" />
+
+            <include
+                layout="@layout/include_fragment_deliver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderNo_tv"
+                android:layout_marginTop="@dimen/base_dimen_16"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_white"
+    android:orientation="vertical"
+    tools:context=".module.auth.activity.VerifyPhoneActivity">
+
+    <com.ybkj.syzs.deliver.ui.view.MyActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hideBottomLine="true" />
+
+    <TextView
+        style="@style/auth_text_login"
+        android:layout_marginStart="@dimen/base_dimen_20"
+        android:layout_marginTop="@dimen/base_dimen_25"
+        android:text="@string/auth_modify_phone" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_dimen_33"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/auth_register_phone_code_et"
+            style="@style/auth_login_edit_text_style"
+            android:enabled="false"
+            android:hint="@string/auth_input_phone"
+            android:inputType="number"
+            android:maxLength="11" />
+
+
+        <TextView
+            android:id="@+id/auth_register_code_btn"
+            style="@style/auth_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginTop="@dimen/base_dimen_8"
+            android:layout_marginRight="@dimen/base_dimen_20"
+            android:gravity="center"
+            android:text="@string/auth_phone_code" />
+
+    </FrameLayout>
+
+
+    <EditText
+        android:id="@+id/auth_code_et"
+        style="@style/auth_login_edit_text_style"
+        android:layout_marginTop="@dimen/base_dimen_33"
+        android:hint="@string/auth_input_code"
+        android:inputType="number"
+        android:maxLength="6" />
+
+    <Button
+        android:id="@+id/auth_btn_next"
+        style="@style/auth_btn_login_shape"
+        android:text="@string/auth_btn_next" />
+</LinearLayout>

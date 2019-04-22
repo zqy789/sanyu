@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--自定义带外边框的TextView -->
+    <declare-styleable name="myTextView">
+        <attr name="line_height" format="dimension" />
+        <attr name="line_color" format="reference|color" />
+        <attr name="radius" format="dimension" />
+        <attr name="background_color" format="reference|color" />
+        <!--四周圆角度、左上、右上、左下、右下-->
+        <attr name="corner_radius" format="dimension" />
+        <attr name="corner_radius_top_left" format="dimension" />
+        <attr name="corner_radius_top_right" format="dimension" />
+        <attr name="corner_radius_bottom_left" format="dimension" />
+        <attr name="corner_radius_bottom_right" format="dimension" />
+    </declare-styleable>
+
+    <!-- 末行对齐方式 -->
+    <declare-styleable name="AlignTextView">
+        <attr name="align" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 标点转换 -->
+    <declare-styleable name="CBAlignTextView">
+        <attr name="punctuationConvert" format="boolean" />
+    </declare-styleable>
+
+    <!--最高高度LinearLayout-->
+    <declare-styleable name="MaxHeightLinearLayout">
+        <attr name="maxHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MyActionBar">
+        <attr name="titleColor" format="color|integer" />
+        <attr name="imageLeft" format="reference" />
+        <attr name="imageRight" format="reference" />
+        <attr name="actionBarColor" format="color|integer" />
+        <attr name="title" format="string" />
+        <attr name="textLeft" format="string" />
+        <attr name="textRight" format="string" />
+        <attr name="leftTextColor" format="color|integer" />
+        <attr name="rightTextColor" format="color|integer" />
+        <attr name="hideBottomLine" format="boolean" />
+        <attr name="canBack" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BackToTopLayout">
+        <attr name="yb_recyclerViewId" format="reference" />
+        <attr name="yb_backToTopFactor" format="float" />
+        <attr name="yb_backToTopDrawable" format="reference" />
+        <attr name="yb_backToTopMarginEnd" format="dimension" />
+        <attr name="yb_backToTopMarginBottom" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="img_radius" format="dimension" />
+    </declare-styleable>
+</resources>

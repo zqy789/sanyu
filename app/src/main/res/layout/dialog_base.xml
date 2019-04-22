@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog_bg"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/base_dimen_16"
+    android:paddingTop="@dimen/base_dimen_16"
+    android:paddingRight="@dimen/base_dimen_16"
+    android:paddingBottom="@dimen/base_dimen_16">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:textColor="@color/color_black_1"
+            android:textSize="@dimen/base_text_size_16"
+            tools:text="this is dialog title" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="content_content_content_content_content_content_content_content_content_content_content" />
+
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/button_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_dimen_38">
+
+        <Button
+            android:id="@+id/btn_negative"
+            android:layout_width="@dimen/base_dimen_100"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/shape_dialog_bottom_cancel"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/color_gray_2" />
+
+        <Button
+            android:id="@+id/btn_positive"
+            android:layout_width="@dimen/base_dimen_100"
+            android:layout_height="@dimen/base_dimen_48"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_dialog_bottom_conform"
+            android:text="@string/confirm"
+            android:textColor="@color/base_white"
+            android:textSize="@dimen/base_text_size_18" />
+
+    </RelativeLayout>
+</LinearLayout>
+
+

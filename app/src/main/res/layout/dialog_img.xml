@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+
+    <ImageView
+        android:id="@+id/dialog_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/dialog_img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/base_dimen_14"
+        android:paddingTop="@dimen/base_dimen_14"
+        android:paddingRight="@dimen/base_dimen_14"
+        android:paddingBottom="@dimen/base_dimen_14"
+        android:src="@mipmap/head_back_white" />
+
+</RelativeLayout>

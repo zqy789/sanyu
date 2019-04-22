@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_dimen_10"
+        android:elevation="@dimen/base_dimen_2"
+        app:cardCornerRadius="@dimen/base_dimen_8"
+        app:cardElevation="0dp"
+        tools:ignore="UnusedAttribute">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_white"
+            android:paddingLeft="@dimen/base_dimen_15"
+            android:paddingTop="@dimen/base_dimen_10"
+            android:paddingRight="@dimen/base_dimen_15"
+            android:paddingBottom="@dimen/base_dimen_13">
+
+            <LinearLayout
+                android:id="@+id/layout_time_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_big"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/auth_color_a4a"
+                    android:textSize="@dimen/base_text_size_20" />
+
+                <TextView
+                    android:id="@+id/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/auth_color_a4a"
+                    android:textSize="@dimen/base_text_size_12" />
+
+                <ImageView
+                    android:layout_width="@dimen/base_dimen_10"
+                    android:layout_height="@dimen/base_dimen_6"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/base_dimen_6"
+                    android:layout_marginBottom="@dimen/base_dimen_5"
+                    android:src="@mipmap/ic_pull_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="月"
+                    android:textColor="@color/project_base_color_green"
+                    android:textSize="@dimen/base_text_size_14" />
+
+                <ImageView
+                    android:layout_width="@dimen/base_dimen_12"
+                    android:layout_height="@dimen/base_dimen_8"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/base_dimen_6"
+                    android:layout_marginRight="@dimen/base_dimen_6"
+                    android:src="@mipmap/ic_exchange" />
+
+                <TextView
+                    android:id="@+id/tv_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="年"
+                    android:textColor="@color/auth_color_a4a"
+                    android:textSize="@dimen/base_text_size_14" />
+            </LinearLayout>
+
+
+            <RadioGroup
+                android:id="@+id/radio_group_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_time_select"
+                android:layout_marginTop="@dimen/base_dimen_15"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_current"
+                    style="@style/project_base_time_sort_btn"
+                    android:checked="true"
+                    android:text="本月" />
+
+                <RadioButton
+                    android:id="@+id/radio_last_month"
+                    style="@style/project_base_time_sort_btn"
+                    android:text="上个月" />
+
+                <RadioButton
+                    android:id="@+id/radio_this_year"
+                    style="@style/project_base_time_sort_btn"
+                    android:text="今年" />
+
+                <RadioButton
+                    android:id="@+id/radio_recent_year"
+                    style="@style/project_base_time_sort_btn"
+                    android:text="近一年" />
+
+                <RadioButton
+                    android:id="@+id/radio_all"
+                    style="@style/project_base_time_sort_btn"
+                    android:text="全部" />
+            </RadioGroup>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <!--<com.meetsl.scardview.SCardView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:cardBackgroundColor="@color/base_white"-->
+    <!--app:cardCornerRadius="@dimen/base_dimen_8"-->
+    <!--app:cardElevation="@dimen/base_dimen_3"-->
+    <!--app:cardLightDirection="top"-->
+    <!--app:cardShadowEndColor="#00000000"-->
+    <!--app:cardShadowStartColor="#1f000000">-->
+
+    <!---->
+
+    <!--</com.meetsl.scardview.SCardView>-->
+</LinearLayout>

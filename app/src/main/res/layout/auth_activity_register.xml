@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_white"
+    android:orientation="vertical">
+
+    <com.ybkj.syzs.deliver.ui.view.MyActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:imageLeft="@mipmap/head_back_black" />
+
+    <TextView
+        style="@style/auth_text_login"
+        android:layout_marginStart="@dimen/base_dimen_20"
+        android:layout_marginTop="@dimen/base_dimen_25"
+        android:text="@string/auth_register_text" />
+
+    <EditText
+        android:id="@+id/auth_account_et"
+        style="@style/auth_login_edit_text_style"
+        android:layout_marginTop="@dimen/base_dimen_45"
+        android:hint="@string/auth_input_account"
+        android:maxLength="16" />
+
+    <include layout="@layout/auth_include_phone_code" />
+
+    <EditText
+        android:id="@+id/auth_code_et"
+        style="@style/auth_login_edit_text_style"
+        android:layout_marginTop="@dimen/base_dimen_33"
+        android:hint="@string/auth_input_phone_code"
+        android:inputType="number"
+        android:maxLength="6" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/base_dimen_17">
+
+        <ImageView
+            android:id="@+id/auth_register_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/base_dimen_4"
+            android:paddingTop="@dimen/base_dimen_9"
+            android:paddingBottom="@dimen/base_dimen_10"
+            android:src="@mipmap/ic_unselect" />
+
+        <TextView
+            android:id="@+id/auth_login_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base_dimen_8"
+            android:layout_toRightOf="@id/auth_register_checkbox"
+            android:text="@string/auth_register_message"
+            android:textColor="@color/auth_color_666"
+            android:textSize="@dimen/base_text_size_14" />
+
+        <TextView
+            android:id="@+id/auth_register_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/auth_login_message"
+            android:text="@string/auth_register_agreement"
+            android:textColor="@color/auth_register_text"
+            android:textSize="@dimen/base_dimen_14" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/auth_btn_next"
+        style="@style/auth_btn_login_shape"
+        android:text="@string/auth_btn_next" />
+</LinearLayout>

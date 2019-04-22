@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/project_base_color_background1"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/project_base_include_search_header" />
+
+    <com.ybkj.syzs.deliver.ui.view.recyclerview.XRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header" />
+
+    <RelativeLayout
+        android:id="@+id/layout_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:background="@color/base_white">
+
+        <RelativeLayout
+            android:id="@+id/layout_history_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_dimen_20"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/base_dimen_20">
+
+            <TextView
+                style="@style/auth_common_text9"
+                android:layout_centerVertical="true"
+                android:text="搜索历史"
+                android:textSize="@dimen/base_text_size_14" />
+
+            <RelativeLayout
+                android:id="@+id/layout_history_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/base_dimen_15">
+
+                <ImageView
+                    android:layout_width="@dimen/base_dimen_14"
+                    android:layout_height="@dimen/base_dimen_14"
+                    android:src="@mipmap/ic_clear_all" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_history_header"
+            android:paddingLeft="@dimen/base_dimen_20" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

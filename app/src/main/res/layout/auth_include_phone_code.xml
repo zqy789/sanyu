@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/base_dimen_33"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/auth_register_phone_code_et"
+        style="@style/auth_login_edit_text_style"
+        android:hint="@string/auth_input_phone"
+        android:inputType="number"
+        android:maxLength="11" />
+
+
+    <TextView
+        android:id="@+id/auth_register_code_btn"
+        style="@style/auth_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginTop="@dimen/base_dimen_8"
+        android:layout_marginRight="@dimen/base_dimen_20"
+        android:gravity="center"
+        android:text="@string/auth_phone_code" />
+
+</FrameLayout>

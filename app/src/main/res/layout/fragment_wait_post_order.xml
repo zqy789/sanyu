@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<com.ybkj.syzs.deliver.ui.view.BackToTopLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:id="@+id/shop_goods_layout"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--app:yb_recyclerViewId="@id/order_recycle">-->
+
+<!----><!--</com.ybkj.syzs.deliver.ui.view.BackToTopLayout>-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ybkj.syzs.deliver.ui.view.TimeSortView
+        android:id="@+id/timeSortView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.ybkj.syzs.deliver.ui.view.refreshlayout.XRefreshLayout
+        android:id="@+id/order_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/timeSortView"
+        android:layout_marginTop="@dimen/base_dimen_10">
+
+        <com.ybkj.syzs.deliver.ui.view.recyclerview.XRecyclerView
+            android:id="@+id/order_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.ybkj.syzs.deliver.ui.view.refreshlayout.XRefreshLayout>
+</RelativeLayout>

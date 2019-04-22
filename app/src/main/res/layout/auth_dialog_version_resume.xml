@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+        android:id="@+id/version_old_tv"
+        style="@style/auth_text_tittle"
+        android:layout_marginLeft="@dimen/base_dimen_16"
+        android:layout_marginRight="@dimen/base_dimen_16"
+        android:text="@string/auth_old_version"
+        android:textColor="#838383"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/version_new_tv"
+        style="@style/auth_text_tittle"
+        android:layout_marginLeft="@dimen/base_dimen_16"
+        android:layout_marginTop="@dimen/base_dimen_8"
+        android:layout_marginRight="@dimen/base_dimen_16"
+        android:text="@string/auth_new_version"
+        android:textColor="#838383"
+        android:textSize="@dimen/sp_14" />
+
+
+    <TextView
+        android:id="@+id/update_dialog_content"
+        style="@style/auth_text_tittle"
+        android:layout_marginLeft="@dimen/base_dimen_16"
+        android:layout_marginTop="@dimen/base_dimen_8"
+        android:layout_marginRight="@dimen/base_dimen_16"
+        android:lineSpacingExtra="@dimen/base_dimen_5"
+        android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        android:textColor="#838383"
+        android:textSize="@dimen/sp_14" />
+</LinearLayout>

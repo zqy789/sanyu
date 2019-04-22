@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_white"
+    android:orientation="vertical">
+
+    <com.ybkj.syzs.deliver.ui.view.MyActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/auth_version_update" />
+
+    <ImageView
+        android:layout_width="@dimen/base_dimen_81"
+        android:layout_height="@dimen/base_dimen_81"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/base_dimen_56"
+        android:src="@mipmap/auth_version" />
+
+    <TextView
+        style="@style/auth_14_a4a"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/base_dimen_22"
+        android:text="三域商贸"
+        android:textColor="@color/auth_color_text_3"
+        android:textSize="@dimen/base_text_size_18" />
+
+    <TextView
+        android:id="@+id/auth_old_version"
+        style="@style/auth_14_a4a"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/base_dimen_16"
+        android:textColor="@color/auth_color_999" />
+
+    <TextView
+        android:id="@+id/auth_version"
+        style="@style/auth_14_a4a"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/base_dimen_4" />
+
+    <LinearLayout
+        android:id="@+id/layout_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/auth_12_999"
+            android:layout_marginLeft="@dimen/base_dimen_45"
+            android:layout_marginTop="@dimen/base_dimen_40"
+            android:text="@string/auth_update_explain" />
+
+        <TextView
+            android:id="@+id/auth_update_content"
+            style="@style/auth_12_999"
+            android:layout_marginLeft="@dimen/base_dimen_45"
+            android:layout_marginTop="@dimen/base_dimen_10"
+            android:lineSpacingExtra="@dimen/base_dimen_10" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/auth_check"
+            style="@style/auth_btn_login_shape"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/base_dimen_30"
+            android:text="@string/auth_check_update" />
+    </FrameLayout>
+
+</LinearLayout>

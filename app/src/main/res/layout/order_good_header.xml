@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/base_white"
+    android:paddingTop="@dimen/base_dimen_15"
+    android:paddingBottom="@dimen/base_dimen_15">
+
+    <TextView
+        android:id="@+id/tv_order_no"
+        style="@style/auth_common_text3" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        style="@style/auth_common_text3"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/tv_add_time"
+        style="@style/auth_common_text9_small"
+        android:layout_below="@+id/tv_order_no"
+        android:layout_marginTop="@dimen/base_dimen_6" />
+</RelativeLayout>

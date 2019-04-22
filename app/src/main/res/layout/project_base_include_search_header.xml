@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base_dimen_50"
+    android:background="@color/base_white">
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:paddingLeft="@dimen/base_dimen_11"
+        android:paddingRight="@dimen/base_dimen_11"
+        android:text="取消" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_dimen_31"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/base_dimen_20"
+        android:layout_toStartOf="@+id/tv_cancel"
+        android:background="@drawable/project_base_grey6_round"
+        android:paddingLeft="@dimen/base_dimen_12"
+        android:paddingRight="@dimen/base_dimen_12">
+
+        <ImageView
+            android:id="@+id/image_search"
+            android:layout_width="@dimen/base_dimen_17"
+            android:layout_height="@dimen/base_dimen_18"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_search_small" />
+
+        <EditText
+            android:id="@+id/edit_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/image_clear"
+            android:layout_toRightOf="@+id/image_search"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/base_dimen_15"
+            android:paddingRight="@dimen/base_dimen_15"
+            android:textColor="@color/auth_color_text_3"
+            android:textColorHint="@color/project_base_color_text_ccc"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/base_text_size_15" />
+
+        <ImageView
+            android:id="@+id/image_clear"
+            android:layout_width="@dimen/base_dimen_18"
+            android:layout_height="@dimen/base_dimen_18"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_edit_clear"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View
+        style="@style/line_h"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
