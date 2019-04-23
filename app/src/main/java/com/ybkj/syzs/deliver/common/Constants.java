@@ -1,5 +1,7 @@
 package com.ybkj.syzs.deliver.common;
 
+import com.ybkj.syzs.deliver.BuildConfig;
+
 /**
  * - @Author:  Yi Shan Xiang
  * - @Description:  参数配置类
@@ -8,16 +10,14 @@ package com.ybkj.syzs.deliver.common;
  */
 
 public class Constants {
-    public static final String BUGLY_APP_ID = "44a53f6524";
+    public static final String BUGLY_APP_ID = "12b41ff733";
     public static final String TOKEN_KEY = "SYSM-Deliver-Access-Token";
     public static final String PROJECT = "demo";
-    public static final String LOGIN_NAME_KEY = "login_account";
+    public static final String LOGIN_NAME_KEY = "youbu_login_account";
 
     public static final String PORT = "app/";
-    //    public static final String DEFAULT_BASE_URL = "http://192.168.4.103:18083/" + PORT;
-    //public static final String DEFAULT_BASE_URL = "http://192.168.4.104:18084";
-    public static final String DEFAULT_BASE_URL = "http://192.168.4.216:18084";
-    // public static final String DEFAULT_BASE_URL = "http://192.168.12.74:18084";
+    public static final String DEFAULT_BASE_URL = BuildConfig.SERVER_ADDRESS;
+
 
 
     //intent请求公共key

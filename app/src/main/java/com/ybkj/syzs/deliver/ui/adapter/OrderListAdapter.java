@@ -23,6 +23,7 @@ import java.util.List;
 public class OrderListAdapter extends XBaseAdapter<OrderListRes.ListBean> {
     private static final int ORDER_STATUS_POSTED = 5;
     private static final int ORDER_STATUS_WAIT_POST = 3;
+    private static final int ORDER_STATUS_COMPLETE = 7;
 
     public OrderListAdapter(Context context) {
         super(context);
@@ -47,11 +48,12 @@ public class OrderListAdapter extends XBaseAdapter<OrderListRes.ListBean> {
             case ORDER_STATUS_WAIT_POST:
                 viewRes = R.layout.recycle_item_order_wait_post;
                 break;
+            case ORDER_STATUS_COMPLETE:
             case ORDER_STATUS_POSTED:
                 viewRes = R.layout.recycle_item_order_posted;
                 break;
             default:
-                viewRes = R.layout.recycle_item_order_wait_post;
+                viewRes = R.layout.recycle_item_order_posted;
                 break;
         }
         return viewRes;
@@ -73,6 +75,10 @@ public class OrderListAdapter extends XBaseAdapter<OrderListRes.ListBean> {
             helper.setText(R.id.tv_order_status, "待发货");
             tvOrderStatus.setTextColor(ResourcesUtil.getColor(R.color.order_status_orange));
             helper.addOnClickListener(R.id.btn_post);
+        } else if (item.getOrderStatus() == ORDER_STATUS_COMPLETE) {
+            helper.setText(R.id.tv_goods_num, "订单商品" + (item.getGoods() == null ? 0 : item.getGoods().size()) + "件");
+            helper.setText(R.id.tv_order_status, "已完成");
+            tvOrderStatus.setTextColor(ResourcesUtil.getColor(R.color.auth_color_666));
         }
     }
 

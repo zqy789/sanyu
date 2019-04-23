@@ -44,10 +44,9 @@ public class XRecyclerView extends RecyclerView {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int topRowVerticalPosition =
-                        (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0)
-                                .getTop();
-
-                if (layoutManager.findFirstCompletelyVisibleItemPosition() == 0 && topRowVerticalPosition >= 0) {
+                        (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
+                int completeVisableItem = layoutManager.findFirstCompletelyVisibleItemPosition() == -1 ? 0 : layoutManager.findFirstCompletelyVisibleItemPosition();
+                if (completeVisableItem == 0 && topRowVerticalPosition >= 0) {
                     mIsCanRefresh = true;
                 } else {
                     mIsCanRefresh = false;

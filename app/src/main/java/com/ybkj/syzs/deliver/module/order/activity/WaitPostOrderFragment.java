@@ -130,7 +130,7 @@ public class WaitPostOrderFragment extends BaseMvpFragment<WaitPostOrderPresente
     @Override
     protected void initData() {
         orderStatus = getArguments().getInt(ORDER_SATTUS);
-        presenter.getOrderData(timeType, time, true, true);
+
     }
 
     @Override
@@ -166,5 +166,11 @@ public class WaitPostOrderFragment extends BaseMvpFragment<WaitPostOrderPresente
         orderListAdapter.getData().clear();
         //       showNetRecycleEmptyView(recycleView);
         orderRefresh.refreshComplete();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getOrderData(timeType, time, true, true);
     }
 }

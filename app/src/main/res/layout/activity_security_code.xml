@@ -42,6 +42,19 @@
                 android:text="录入防伪码"
                 android:textColor="@color/base_white"
                 android:textSize="@dimen/base_text_size_20" />
+
+            <TextView
+                android:id="@+id/tv_from_album"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/base_dimen_15"
+                android:paddingRight="@dimen/base_dimen_15"
+                android:text="相册选取"
+                android:textColor="@color/base_white"
+                android:textSize="@dimen/base_text_size_14" />
         </RelativeLayout>
 
         <TextView

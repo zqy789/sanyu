@@ -122,7 +122,7 @@ public class PostedOrderFragment extends BaseMvpFragment<PostedOrderPresenter> i
     @Override
     protected void initData() {
         orderStatus = getArguments().getInt(ORDER_SATTUS);
-        presenter.getOrderData(timeType, time, true, true);
+
     }
 
     @Override
@@ -158,5 +158,11 @@ public class PostedOrderFragment extends BaseMvpFragment<PostedOrderPresenter> i
         orderListAdapter.getData().clear();
         //       showNetRecycleEmptyView(recycleView);
         orderRefresh.refreshComplete();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getOrderData(timeType, time, true, true);
     }
 }

@@ -96,11 +96,10 @@ public class OrderSearchActivity extends BaseMvpActivity<OrderSearchPresenter> i
                 if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     String content = editSearch.getText().toString().trim();
                     if (TextUtils.isEmpty(content)) {
-                        ToastUtil.showShort("订单号不能为空");
+                        ToastUtil.showShort("关键字不能为空");
                         return true;
                     }
                     if (content.length() < 5) {
-                        ToastUtil.showShort("请输入大于4位的订单号");
                         return true;
                     }
                     HistoryManager.addOrderSearchHistory(content);
@@ -122,6 +121,8 @@ public class OrderSearchActivity extends BaseMvpActivity<OrderSearchPresenter> i
                 String content = editSearch.getText().toString().trim();
                 if (!TextUtils.isEmpty(content) && content.length() > 4) {
                     presenter.getOrderData(content);
+                } else if (s.length() == 0) {
+                    showHistory();
                 }
 
             }
@@ -173,7 +174,7 @@ public class OrderSearchActivity extends BaseMvpActivity<OrderSearchPresenter> i
         searchAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                if (searchAdapter.getItem(position).getOrderStatus() == 5) {
+                if (searchAdapter.getItem(position).getOrderStatus() == 5 || searchAdapter.getItem(position).getOrderStatus() == 7) {
                     HistoryManager.addOrderSearchHistory(keyword);
 
                     Intent intent = new Intent(mContext, OrderDetailActivity.class);
@@ -192,11 +193,7 @@ public class OrderSearchActivity extends BaseMvpActivity<OrderSearchPresenter> i
             @Override
             public void onClick(View v) {
                 editSearch.setText("");
-                layoutHistory.setVisibility(View.VISIBLE);
-                OrderSearchHistory history = HistoryManager.getOrderSearchHistory();
-                if (history != null) {
-                    historyAdapter.setNewData(history.getKewords());
-                }
+                showHistory();
             }
         });
         layoutHistoryClear.setOnClickListener(new View.OnClickListener() {
@@ -211,14 +208,32 @@ public class OrderSearchActivity extends BaseMvpActivity<OrderSearchPresenter> i
 
     @Override
     protected void initData() {
-
+        OrderSearchHistory history = HistoryManager.getOrderSearchHistory();
+        if (history != null) {
+            historyAdapter.setNewData(history.getKewords());
+        }
     }
 
     @Override
     public void refreshList(List<OrderListRes.ListBean> data) {
+        if (editSearch.getText().toString().length() == 0) {
+            return;//添加此判断防止删除过快时前面的数据还在请求中这里关键字删了，但是返回数据后再次展示搜索结果
+        }
         layoutHistory.setVisibility(View.GONE);
         keyword = editSearch.getText().toString().trim();
         searchAdapter.setNewData(data);
+    }
+
+    private void showHistory() {
+        List<OrderListRes.ListBean> data = searchAdapter.getData();
+        data.clear();
+        searchAdapter.setNewData(data);
+
+        layoutHistory.setVisibility(View.VISIBLE);
+        OrderSearchHistory history = HistoryManager.getOrderSearchHistory();
+        if (history != null) {
+            historyAdapter.setNewData(history.getKewords());
+        }
     }
 
 }

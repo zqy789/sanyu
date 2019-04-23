@@ -118,8 +118,7 @@ public class ScanCodeActivity extends BaseActivity {
      */
     @SuppressLint("CheckResult")
     private void checkPermission() {
-        new RxPermissions(this).request(Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.VIBRATE)
+        new RxPermissions(this).request(Manifest.permission.CAMERA, Manifest.permission.VIBRATE)
                 .subscribe(aBoolean -> {
                             if (aBoolean) {
                                 CaptureFragment captureFragment = new CaptureFragment();

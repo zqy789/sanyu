@@ -3,9 +3,11 @@ package com.ybkj.syzs.deliver.module.order.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,6 +29,7 @@ import com.ybkj.syzs.deliver.base.BaseMvpActivity;
 import com.ybkj.syzs.deliver.bean.response.OrderListRes;
 import com.ybkj.syzs.deliver.module.order.presenter.ScanSecurityPresenter;
 import com.ybkj.syzs.deliver.module.order.view.ScanSecurityView;
+import com.ybkj.syzs.deliver.module.user.activity.PictureChoseActivity;
 import com.ybkj.syzs.deliver.utils.FullScreenUtils;
 import com.ybkj.syzs.deliver.utils.ImageLoadUtils;
 import com.ybkj.syzs.deliver.utils.ToastUtil;
@@ -41,6 +44,7 @@ import butterknife.OnClick;
  */
 public class ScanSecurityActivity extends BaseMvpActivity<ScanSecurityPresenter> implements ScanSecurityView {
     public static final int SCAN_SUCCESS = 101;
+    public static final int REQUEST_ALBUM = 102;
     //返回
     @BindView(R.id.scan_code_cancel)
     ImageView cancel;
@@ -55,6 +59,8 @@ public class ScanSecurityActivity extends BaseMvpActivity<ScanSecurityPresenter>
     TextView codeTv;
     @BindView(R.id.orderNo_tv)
     TextView OrderNo;
+    @BindView(R.id.tv_from_album)
+    TextView tvFromAlbum;
     private Runnable runnable;
     private int scanPosition = 0;//当前扫描的集合位置
     private CaptureFragment captureFragment;
@@ -121,6 +127,13 @@ public class ScanSecurityActivity extends BaseMvpActivity<ScanSecurityPresenter>
             codeTv.setText("防伪码：" + bean.getGoodsPublicCode());
         }
         ImageLoadUtils.loadUrlImage(mContext, bean.getGoodsImg(), shopLogoIv);
+
+        tvFromAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findPicture();
+            }
+        });
     }
 
     /**
@@ -153,8 +166,7 @@ public class ScanSecurityActivity extends BaseMvpActivity<ScanSecurityPresenter>
      */
     @SuppressLint("CheckResult")
     private void checkPermission() {
-        new RxPermissions(this).request(Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.VIBRATE)
+        new RxPermissions(this).request(Manifest.permission.CAMERA, Manifest.permission.VIBRATE)
                 .subscribe(aBoolean -> {
                             if (aBoolean) {
                                 captureFragment = new CaptureFragment();
@@ -283,5 +295,42 @@ public class ScanSecurityActivity extends BaseMvpActivity<ScanSecurityPresenter>
             resetScan();
         };
         mHandler.postDelayed(runnable, codeRequestTime);
+    }
+
+    @SuppressLint("CheckResult")
+    private void findPicture() {
+        int storagePermission = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (storagePermission != PackageManager.PERMISSION_GRANTED) {
+            new RxPermissions(mContext).request(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .subscribe(aBoolean -> {
+                                if (aBoolean) {
+                                    Intent intent = new Intent(mContext, PictureChoseActivity.class);
+                                    startActivityForResult(intent, REQUEST_ALBUM);
+                                } else {
+                                    ToastUtil.showShort("获取相机权限失败");
+                                }
+                            },
+                            Throwable::printStackTrace
+                    );
+        } else {
+            Intent intent = new Intent(mContext, PictureChoseActivity.class);
+            startActivityForResult(intent, REQUEST_ALBUM);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == PictureChoseActivity.SELECT_PICTURE_SUCCESS) {
+            parsePhoto(data.getStringExtra("path"));
+        }
+    }
+
+    private void parsePhoto(String path) {
+        if (TextUtils.isEmpty(path)) {
+            return;
+        }
+        CodeUtils.analyzeBitmap(path, analyzeCallback);
+
     }
 }

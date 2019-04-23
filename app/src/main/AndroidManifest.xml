@@ -25,10 +25,10 @@
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="design_width_in_dp"
-            android:value="360" />
+            android:value="375" />
         <meta-data
             android:name="design_height_in_dp"
-            android:value="640" />
+            android:value="667" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -69,25 +69,49 @@
 
         <service android:name="com.ybkj.syzs.deliver.service.ApkDownInstallService" />
 
-        <activity android:name="com.ybkj.syzs.deliver.module.changeurl.ChangeUrlActivity">
+        <activity
+            android:name="com.ybkj.syzs.deliver.module.changeurl.ChangeUrlActivity"
+            android:launchMode="singleTask">
 
         </activity>
-        <activity android:name=".module.auth.activity.ModifyPhoneActivity" />
-        <activity android:name=".module.auth.activity.ModifyPsdActivity" />
-        <activity android:name=".module.auth.activity.ResetPasswordActivity" />
-        <activity android:name=".module.auth.activity.RetrieveActivity" />
-        <activity android:name=".module.auth.activity.VerifyPhoneActivity" />
-        <activity android:name=".module.auth.activity.VersionActivity" />
-        <activity android:name=".module.order.activity.ScanSecurityActivity" />
+        <activity
+            android:name=".module.auth.activity.ModifyPhoneActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".module.auth.activity.ModifyPsdActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".module.auth.activity.ResetPasswordActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".module.auth.activity.RetrieveActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".module.auth.activity.VerifyPhoneActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".module.auth.activity.VersionActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".module.order.activity.ScanSecurityActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".module.order.activity.GoodsPostActivity"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".module.order.activity.OrderDetailActivity" />
+        <activity
+            android:name=".module.order.activity.OrderDetailActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".module.order.activity.OrderSearchActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".module.user.activity.UserInfoActivity" />
-        <activity android:name=".module.order.activity.ScanCodeActivity" />
+        <activity
+            android:name=".module.user.activity.UserInfoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".module.order.activity.ScanCodeActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".module.user.activity.PictureChoseActivity" />
     </application>
 
 </manifest>

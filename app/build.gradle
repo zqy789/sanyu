@@ -8,6 +8,7 @@ android {
         targetSdkVersion 27
         versionCode 2
         versionName "1.0.1"
+        flavorDimensions "20"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //设计稿上的屏幕宽度
         buildConfigField("float", "DESIGN_WIDTH", "375")
@@ -41,7 +42,7 @@ android {
             android.applicationVariants.all {
                 variant ->
                     variant.outputs.all {
-                        outputFileName = "demo_V${variant.versionName}_${releaseTime()}.apk"
+                        outputFileName = "deliver_${variant.productFlavors[0].name}_V${defaultConfig.versionName}_${releaseTime()}.apk"
                     }
             }
         }
@@ -53,11 +54,32 @@ android {
             signingConfig signingConfigs.signing
             resValue "string", "app_name", "三域发货-debug"
         }
-
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // 多渠道/多环境 的不同配置
+    productFlavors {
+        online {
+            //远程服务器类型(1:正式服；2：外网测试服；3：本地测试服)
+            buildConfigField "int", "SERVER_TYPE", "1"
+            //服务器地址，此值会在Constants.java里面引用
+            buildConfigField "String", "SERVER_ADDRESS", "\"http://deliverapp.qianhaishengshi.com\""
         }
+        remoteTest {
+            //远程服务器类型(1:正式服；2：外网测试服；3：本地测试服)
+            buildConfigField "int", "SERVER_TYPE", "2"
+            buildConfigField "String", "SERVER_ADDRESS", "\"http://47.111.188.252:7076\""
+        }
+        localTest {
+            //远程服务器类型(1:正式服；2：外网测试服；3：本地测试服)
+            buildConfigField "int", "SERVER_TYPE", "3"
+            //         buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.12.74:18084\""
+            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.4.104:18084\""
+            //           buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.4.216:18084\""
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

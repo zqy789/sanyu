@@ -204,7 +204,7 @@ public static final int *;
 -keep class com.ybkj.syzs.deliver.net.**{*;}
 
 
--keep class com.ybkj.syzs.deliver.common.Constants
+#-keep class com.ybkj.syzs.deliver.common.Constants
 
 
 #rxjava混淆
@@ -273,6 +273,18 @@ public static final int *;
 -keep class   com.tbruyelle.** { *; }
 -keep interface   com.tbruyelle.** { *; }
 -dontwarn   com.tbruyelle.**
+-keepattributes *Annotation*
+
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+
+# Only required if you use AsyncExecutor
+-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
+    <init>(java.lang.Throwable);
+}
+
 
 # 对于带有回调函数的onXXEvent、**On*Listener的，不能被混淆
 -keepclassmembers class * {
@@ -280,8 +292,15 @@ public static final int *;
     void *(**On*Listener);
 }
 
--dontwarn com.tencent.bugly.**
--keep public class com.tencent.bugly.**{*;}
-# tinker混淆规则
--dontwarn com.tencent.tinker.**
--keep class com.tencent.tinker.** { *; }
+#########################Sophix Start##############################
+#修复后的项目使用，保证混淆结果一致
+#-applymapping mapping.txt
+#hotfix
+-keep class com.taobao.sophix.**{*;}
+-keep class com.ta.utdid2.device.**{*;}
+-dontwarn com.alibaba.sdk.android.utils.**
+#保证原来的application类构造方法不被混淆
+-keepclassmembers class com.ybkj.syzs.deliver.MyApplication {
+    public <init>();
+}
+#########################Sophix End##############################

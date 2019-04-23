@@ -144,6 +144,7 @@ public class GoodsPostActivity extends BaseMvpActivity<GoodsPostPresenter> imple
             OrderListRes.ListBean order = (OrderListRes.ListBean) data.getExtras().getSerializable("order");
             List<OrderListRes.ListBean.GoodsBean> goodsBeanList = order.getGoods();
             goodsAdapter.setNewData(goodsBeanList);
+            this.order.setGoods(goodsBeanList);
         } else if (resultCode == ScanCodeActivity.EXPRESS_SUCCESS) {
             editExpressNo.setText(data.getStringExtra("expressNo"));
         }
@@ -166,7 +167,6 @@ public class GoodsPostActivity extends BaseMvpActivity<GoodsPostPresenter> imple
                             Throwable::printStackTrace
                     );
         } else {
-            //true表示获取权限成功（android6.0以下默认为true）
             Intent intent = new Intent(mContext, ScanCodeActivity.class);
             startActivityForResult(intent, REQUEST_EXPRESS_SCAN);
         }
@@ -202,4 +202,5 @@ public class GoodsPostActivity extends BaseMvpActivity<GoodsPostPresenter> imple
         }
 
     }
+
 }
