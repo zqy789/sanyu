@@ -54,7 +54,7 @@ public class ApkDownInstallService extends IntentService {
         mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mBuilder = new Notification.Builder(this);
         String appName = getString(getApplicationInfo().labelRes);
-        mBuilder.setContentTitle(appName).setSmallIcon(R.mipmap.ic_launcher_app);
+        mBuilder.setContentTitle(appName).setSmallIcon(R.mipmap.app_logo);
 
         eventTag = intent.getStringExtra("tag");
         EventBus.getDefault().post(new ProgressMessage(eventTag, ProgressMessage.SHOW, 0));

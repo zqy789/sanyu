@@ -226,12 +226,6 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
                                 //intent.putExtra("intent_md5", appUpdateRes.getUpdateKey());
                                 intent.putExtra("apkUrl", appUpdateRes.getAppUrl());
                                 startService(intent);
-                                if (appUpdateRes.getUseType() == 2 || finalCanForceUpdate) {// 1：可用更新，2：强制更新
-                                    toast("应用正在下载，请稍后");
-                                } else {
-                                    toast("开始下载");
-                                }
-
                             }
                         }).start();
             }
