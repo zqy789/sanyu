@@ -164,7 +164,7 @@ public class WaitPostOrderFragment extends BaseMvpFragment<WaitPostOrderPresente
     @Override
     public void showEmptyView() {
         orderListAdapter.getData().clear();
-        //       showNetRecycleEmptyView(recycleView);
+        showNetRecycleEmptyView(orderRecycle);
         orderRefresh.refreshComplete();
     }
 

@@ -171,7 +171,6 @@ public abstract class BaseRxPresenter<T extends BaseView> implements BasePresent
                         mView.onLoginError();
                         break;
                     default:
-                        mView.onError(e.getMessage());
                         onError(e.getMessage(), tag);
                         onError(e.getMessage());
                         break;
@@ -190,7 +189,7 @@ public abstract class BaseRxPresenter<T extends BaseView> implements BasePresent
      * @param errorMsg 网络请求失败的返回结果
      */
     public void onError(String errorMsg, int tag) {
-
+        mView.onError(errorMsg);
     }
 
     /**

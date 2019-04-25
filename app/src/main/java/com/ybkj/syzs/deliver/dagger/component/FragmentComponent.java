@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 
 import com.ybkj.syzs.deliver.dagger.module.FragmentModule;
 import com.ybkj.syzs.deliver.dagger.scope.FragmentScope;
+import com.ybkj.syzs.deliver.module.auth.activity.AccountBackPsdFragment;
+import com.ybkj.syzs.deliver.module.auth.activity.PhoneBackPsdFragment;
 import com.ybkj.syzs.deliver.module.order.activity.PostedOrderFragment;
 import com.ybkj.syzs.deliver.module.order.activity.WaitPostOrderFragment;
 
@@ -27,4 +29,9 @@ public interface FragmentComponent {
     void inject(PostedOrderFragment postedOrderFragment);
 
     void inject(WaitPostOrderFragment waitPostOrderFragment);
+
+    void inject(AccountBackPsdFragment accountBackPsdFragment);
+
+    void inject(PhoneBackPsdFragment phoneBackPsdFragment);
+
 }

@@ -12,6 +12,7 @@ import com.ybkj.syzs.deliver.manager.ActivityManager;
 import com.ybkj.syzs.deliver.manager.UserDataManager;
 import com.ybkj.syzs.deliver.module.auth.presenter.VerifyPhonePresenter;
 import com.ybkj.syzs.deliver.module.auth.view.IVerifyPhoneView;
+import com.ybkj.syzs.deliver.utils.InputTextHelper;
 import com.ybkj.syzs.deliver.utils.ToastUtil;
 import com.ybkj.syzs.deliver.utils.VerificationCodeUtil;
 
@@ -53,7 +54,11 @@ public class VerifyPhoneActivity extends BaseMvpActivity<VerifyPhonePresenter> i
 
     @Override
     protected void initView() {
-
+        new InputTextHelper.Builder(this)
+                .setMain(authBtnNext)
+                .addView(authRegisterPhoneCodeEt)
+                .addView(authCodeEt)
+                .build();
     }
 
     @Override
@@ -81,13 +86,11 @@ public class VerifyPhoneActivity extends BaseMvpActivity<VerifyPhonePresenter> i
     public void onViewClicked(View view) {
         int i = view.getId();//获取验证码
         if (i == R.id.auth_register_code_btn) {
-            String phone = authRegisterPhoneCodeEt.getText().toString().trim();
             presenter.getPhoneCode(phoneNumber);
 
         }
         //下一步
         else if (i == R.id.auth_btn_next) {
-            String phone = authRegisterPhoneCodeEt.getText().toString().trim();
             String phoneCode = authCodeEt.getText().toString().trim();
             presenter.verifyPhone(phoneNumber, phoneCode);
         }

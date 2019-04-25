@@ -11,5 +11,13 @@ import com.ybkj.syzs.deliver.base.BaseView;
 public interface ModifyPasswordView extends BaseView {
     void modifySuccess();
 
-    void getSmsSuccess();
+    void PhoneCodeSuccess();
+
+    void passPassword();
+
+    void simplePassword(String message);
+
+    void passwordInequalityPassword();
+
+    void passwordequalityPassword();
 }

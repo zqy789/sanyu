@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -12,12 +13,13 @@ import android.view.View;
 
 import com.ybkj.syzs.deliver.R;
 
+
 /**
  * author : ywh
  * date : 2019/1/23 9:45
  * description :可清除的输入框
  */
-public class ClearEditText extends android.support.v7.widget.AppCompatEditText
+public class ClearEditText extends AppCompatEditText
         implements View.OnTouchListener, View.OnFocusChangeListener, TextWatcher {
 
     private Drawable mClearIcon;
@@ -54,7 +56,7 @@ public class ClearEditText extends android.support.v7.widget.AppCompatEditText
      * @param context
      */
     private void initialize(Context context) {
-        final Drawable drawable = ContextCompat.getDrawable(context, R.mipmap.icon_input_del);
+        final Drawable drawable = ContextCompat.getDrawable(context, R.mipmap.ic_edit_delete);
 
         final Drawable wrappedDrawable = DrawableCompat.wrap(drawable); //Wrap the drawable so that it can be tinted pre Lollipop
         //DrawableCompat.setTint(wrappedDrawable, getCurrentHintTextColor());

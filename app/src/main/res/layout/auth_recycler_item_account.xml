@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base_dimen_53"
+    android:background="@drawable/auth_shape_edit_bg_focus_dark"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/account_tv"
+        style="@style/auth_common_text3"
+        android:layout_centerVertical="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_next" />
+
+</RelativeLayout>

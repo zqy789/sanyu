@@ -156,7 +156,7 @@ public class PostedOrderFragment extends BaseMvpFragment<PostedOrderPresenter> i
     @Override
     public void showEmptyView() {
         orderListAdapter.getData().clear();
-        //       showNetRecycleEmptyView(recycleView);
+        showNetRecycleEmptyView(orderRecycle);
         orderRefresh.refreshComplete();
     }
 

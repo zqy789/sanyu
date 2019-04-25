@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.widget.Toast;
+
+import com.coder.zzq.smartshow.toast.SmartToast;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
@@ -34,13 +37,15 @@ public class ToastUtil {
         if (TextUtils.isEmpty(message)) {
             return;
         }
-        if (toast == null) {
-            toast = Toast.makeText(ResourcesUtil.getContext(), message, Toast.LENGTH_SHORT);
-        } else {
-            toast.setDuration(Toast.LENGTH_SHORT);
-            toast.setText(message);
-        }
-        toast.show();
+//        if (toast == null) {
+//            toast = Toast.makeText(ResourcesUtil.getContext(), message, Toast.LENGTH_SHORT);
+//        } else {
+//            toast.setDuration(Toast.LENGTH_SHORT);
+//            toast.setText(message);
+//        }
+//        toast.show();
+//        SmartToast.showAtTop(message);
+        SmartToast.showAtLocation(message, Gravity.TOP, 0, 150);
     }
 
     public static void hideToast() {
@@ -55,12 +60,15 @@ public class ToastUtil {
     public static void toast(final Context context, final CharSequence s) {
         new Thread(() -> {
             Looper.prepare();
-            Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+            SmartToast.showAtLocation(s, Gravity.TOP, 0, 150);
             Looper.loop();
         }).start();
     }
 
     public static void toast(final Activity activity, final CharSequence s) {
-        activity.runOnUiThread(() -> Toast.makeText(activity, s, Toast.LENGTH_SHORT).show());
+        activity.runOnUiThread(() ->
+                SmartToast.showAtLocation(s, Gravity.TOP, 0, 150)
+        );
     }
 }

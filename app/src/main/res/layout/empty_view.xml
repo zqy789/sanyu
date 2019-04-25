@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/base_white"
     android:orientation="vertical">
 
 
@@ -9,18 +10,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/base_dimen_60">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_width="@dimen/base_dimen_168"
+            android:layout_height="@dimen/base_dimen_157"
+            android:src="@mipmap/project_base_ic_empty" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/base_dimen_20"
+            android:textColor="@color/auth_color_text_3"
+            android:textSize="@dimen/base_text_size_15"
             android:text="暂无数据" />
     </LinearLayout>
 

@@ -21,6 +21,7 @@ public class LoginRes implements Serializable {
     private String phoneNumber;
     private String operatorAccount;
     private String token;
+    private int simpleStatus;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -44,5 +45,13 @@ public class LoginRes implements Serializable {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public int getSimpleStatus() {
+        return simpleStatus;
+    }
+
+    public void setSimpleStatus(int simpleStatus) {
+        this.simpleStatus = simpleStatus;
     }
 }

@@ -1,6 +1,8 @@
 package com.ybkj.syzs.deliver.module;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,11 +17,13 @@ import com.ybkj.syzs.deliver.base.BaseMvpActivity;
 import com.ybkj.syzs.deliver.bean.response.LoginRes;
 import com.ybkj.syzs.deliver.manager.ActivityManager;
 import com.ybkj.syzs.deliver.manager.UserDataManager;
+import com.ybkj.syzs.deliver.module.auth.activity.ModifyPsdActivity;
 import com.ybkj.syzs.deliver.module.order.activity.OrderSearchActivity;
 import com.ybkj.syzs.deliver.module.order.activity.PostedOrderFragment;
 import com.ybkj.syzs.deliver.module.order.activity.WaitPostOrderFragment;
 import com.ybkj.syzs.deliver.module.user.activity.UserInfoActivity;
 import com.ybkj.syzs.deliver.ui.adapter.ViewPagerAdapter;
+import com.ybkj.syzs.deliver.ui.dialog.TipDialog;
 import com.ybkj.syzs.deliver.utils.ResourcesUtil;
 
 import butterknife.BindView;
@@ -28,7 +32,7 @@ import butterknife.BindView;
  * - @Author:  Yi Shan Xiang
  * - @Description:  首页
  */
-public class MainActivity extends BaseMvpActivity<MainPresenter> implements IMainAtView {
+public class MainActivity extends BaseMvpActivity {
     private static final int ORDER_STATUS_WAIT_POST = 3;//订单状态：待发货
     private static final int ORDER_STATUS_POSTED = 5;//订单状态：已发货
     @BindView(R.id.image_avatar)
@@ -45,6 +49,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements IMai
     LinearLayout layoutUserInfo;
     //点击回退的时间
     private long recodeTime = 0;
+    private boolean passwordSimple = false;
+
+    private TipDialog passwordDialog;
 
     @Override
     protected void initTitle() {
@@ -75,7 +82,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements IMai
         layoutUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // todo 跳转到个人信息页
+                //跳转到个人信息页
                 Intent intent = new Intent(mContext, UserInfoActivity.class);
                 ActivityManager.gotoActivity(mContext, intent);
             }
@@ -94,7 +101,32 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements IMai
         if (loginRes != null) {
             tvUserName.setText(loginRes.getOperatorAccount());
         }
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            passwordSimple = bundle.getBoolean("simple", false);
+            if (passwordSimple) {
+                showResetDialog();
+            }
+        }
 
+
+    }
+
+    /**
+     * 显示密码过于简单提示框
+     */
+    private void showResetDialog() {
+        if (passwordDialog == null) {
+            passwordDialog = new TipDialog(mContext);
+            passwordDialog.setContentText("检测到您的登录密码过于简单，是否去重置密码？");
+            passwordDialog.setTitleText("重置登录密码");
+            passwordDialog.setOnConfirmButtonClickListener((Dialog dialog, View view) -> {
+                ActivityManager.gotoActivity(mContext, ModifyPsdActivity.class);
+            });
+        }
+        if (!passwordDialog.isShowing()) {
+            passwordDialog.show();
+        }
     }
 
 

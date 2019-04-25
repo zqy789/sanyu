@@ -1,25 +1,32 @@
 package com.ybkj.syzs.deliver.net.api;
 
 import com.ybkj.syzs.deliver.bean.BaseResponse;
+import com.ybkj.syzs.deliver.bean.request.AccountListReq;
 import com.ybkj.syzs.deliver.bean.request.CheckCodeUseReq;
 import com.ybkj.syzs.deliver.bean.request.GoodPostReq;
 import com.ybkj.syzs.deliver.bean.request.LoginReq;
 import com.ybkj.syzs.deliver.bean.request.ModifyPassReq;
 import com.ybkj.syzs.deliver.bean.request.ModifyReq;
 import com.ybkj.syzs.deliver.bean.request.OrderListReq;
+import com.ybkj.syzs.deliver.bean.request.PasswordReq;
 import com.ybkj.syzs.deliver.bean.request.PhoneNumberReq;
 import com.ybkj.syzs.deliver.bean.request.ResetPasswordReq;
+import com.ybkj.syzs.deliver.bean.request.SignReq;
 import com.ybkj.syzs.deliver.bean.request.VerfyPhoneCodeReq;
+import com.ybkj.syzs.deliver.bean.response.AccountListRes;
 import com.ybkj.syzs.deliver.bean.response.LoginRes;
 import com.ybkj.syzs.deliver.bean.response.MineDataRes;
 import com.ybkj.syzs.deliver.bean.response.OrderDetailRes;
 import com.ybkj.syzs.deliver.bean.response.OrderListRes;
+import com.ybkj.syzs.deliver.bean.response.PhoneRes;
+import com.ybkj.syzs.deliver.bean.response.SignRes;
 import com.ybkj.syzs.deliver.bean.response.VersionRes;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -52,7 +59,7 @@ public interface ApiService {
      *
      * @return
      */
-    @POST("/deliver/app/forget")
+    @PUT("/deliver/app/resetPassword")
     Observable<BaseResponse<Object>> forgetPass(@Body ResetPasswordReq req);
 
     /**
@@ -87,6 +94,8 @@ public interface ApiService {
     Observable<BaseResponse<Object>> modifyPhone(@Body ModifyReq req);
 
 
+    @POST("/deliver/app/passwordCheckout")
+    Observable<BaseResponse<Object>> checkPwd(@Body PasswordReq req);
     /**
      * 版本更新
      *
@@ -146,5 +155,14 @@ public interface ApiService {
      */
     @GET("/deliver/order/detail/{orderNo}")
     Observable<BaseResponse<OrderDetailRes>> getOrderDetail(@Path("orderNo") String orderNo);
+
+    @POST("/deliver/app/listUserByPhone")
+    Observable<BaseResponse<AccountListRes>> getAccountList(@Body AccountListReq req);
+
+    @POST("/deliver/app/validatePhoneForforget")
+    Observable<BaseResponse<SignRes>> getSign(@Body SignReq req);
+
+    @GET("/deliver/app/getPhone/{userAccount}")
+    Observable<BaseResponse<PhoneRes>> getPhone(@Path("userAccount") String account);
 
 }

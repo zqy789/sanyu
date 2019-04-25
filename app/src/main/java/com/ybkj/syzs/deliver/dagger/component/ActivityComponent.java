@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.ybkj.syzs.deliver.dagger.module.ActivityModule;
 import com.ybkj.syzs.deliver.dagger.scope.ActivityScope;
-import com.ybkj.syzs.deliver.module.MainActivity;
+import com.ybkj.syzs.deliver.module.auth.activity.AccountChoseActivity;
 import com.ybkj.syzs.deliver.module.auth.activity.LoginActivity;
 import com.ybkj.syzs.deliver.module.auth.activity.ModifyPhoneActivity;
 import com.ybkj.syzs.deliver.module.auth.activity.ModifyPsdActivity;
@@ -38,7 +38,6 @@ public interface ActivityComponent {
 
     Context getContext();
 
-    void inject(MainActivity mainActivity);
 
     void inject(LoginActivity loginActivity);
 
@@ -65,4 +64,6 @@ public interface ActivityComponent {
     void inject(OrderSearchActivity orderSearchActivity);
 
     void inject(UserInfoActivity userInfoActivity);
+
+    void inject(AccountChoseActivity accountChoseActivity);
 }

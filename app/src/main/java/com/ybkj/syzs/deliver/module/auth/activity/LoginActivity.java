@@ -1,5 +1,6 @@
 package com.ybkj.syzs.deliver.module.auth.activity;
 
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
@@ -7,8 +8,8 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ybkj.syzs.deliver.R;
@@ -20,6 +21,9 @@ import com.ybkj.syzs.deliver.module.MainActivity;
 import com.ybkj.syzs.deliver.module.auth.presenter.LoginPresenter;
 import com.ybkj.syzs.deliver.module.auth.view.ILoginView;
 import com.ybkj.syzs.deliver.module.changeurl.ChangeUrlActivity;
+import com.ybkj.syzs.deliver.ui.view.ClearEditText;
+import com.ybkj.syzs.deliver.ui.view.MyActionBar;
+import com.ybkj.syzs.deliver.utils.InputTextHelper;
 import com.ybkj.syzs.deliver.utils.SPHelper;
 import com.ybkj.syzs.deliver.utils.StringUtil;
 
@@ -35,23 +39,30 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements ILoginView {
     //账号输入
     @BindView(R.id.auth_account_et)
-    EditText authAccountEt;
+    ClearEditText authAccountEt;
     //密码输入
     @BindView(R.id.auth_password_et)
     EditText authPasswordEt;
     //忘记密码
-    @BindView(R.id.auth_forget_password_tv)
+    @BindView(R.id.for_password)
     TextView authForgetPasswordTv;
-    @BindView(R.id.password_visible)
-    ImageButton passwordVisible;
     //登录按钮
     @BindView(R.id.auth_login_btn)
     Button authLoginTtn;
     //注册
-    @BindView(R.id.auth_register_tv)
-    TextView authRegisterTv;
-    @BindView(R.id.login_logo)
-    ImageView loginLogo;
+    @BindView(R.id.auth_register_layout)
+    LinearLayout authRegisterTv;
+    //设置密码显示
+    @BindView(R.id.show_password)
+    ImageView hidePassword;
+    //分割线
+    @BindView(R.id.view)
+    View lineView;
+
+    @BindView(R.id.toolbar)
+    MyActionBar myActionBar;
+    @BindView(R.id.net_tip)
+    TextView netTip;
 
     private long recodeTime;
     private int clickTimes = 0;
@@ -73,7 +84,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements IL
 
     @Override
     protected void initView() {
-        loginLogo.setOnClickListener(new View.OnClickListener() {
+        netTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (System.currentTimeMillis() - recodeTime > 2000) {
@@ -86,6 +97,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements IL
                 }
             }
         });
+        new InputTextHelper.Builder(this)
+                .setMain(authLoginTtn)
+                .addView(authPasswordEt)
+                .addView(authPasswordEt)
+                .build();
 
         authPasswordEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -96,9 +112,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements IL
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 0) {
-                    passwordVisible.setVisibility(View.VISIBLE);
+                    hidePassword.setVisibility(View.VISIBLE);
+                    lineView.setVisibility(View.VISIBLE);
                 } else {
-                    passwordVisible.setVisibility(View.GONE);
+                    hidePassword.setVisibility(View.GONE);
+                    lineView.setVisibility(View.GONE);
                 }
             }
 
@@ -107,16 +125,15 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements IL
 
             }
         });
-
-        passwordVisible.setOnClickListener(new View.OnClickListener() {
+        hidePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (authPasswordEt.getTransformationMethod() == HideReturnsTransformationMethod.getInstance()) {
                     authPasswordEt.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    passwordVisible.setImageResource(R.mipmap.ic_password_visible);
+                    hidePassword.setImageResource(R.mipmap.auth_new_login_dismiss);
                 } else {
                     authPasswordEt.setTransformationMethod(HideReturnsTransformationMethod.getInstance()); //密码可见
-                    passwordVisible.setImageResource(R.mipmap.ic_password_unvisible);
+                    hidePassword.setImageResource(R.mipmap.auth_new_password_show);
                 }
             }
         });
@@ -131,12 +148,12 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements IL
         }
     }
 
-    @OnClick({R.id.auth_forget_password_tv, R.id.auth_login_btn, R.id.auth_register_tv})
+    @OnClick({R.id.for_password, R.id.auth_login_btn})
     public void onViewClicked(View view) {
         int i = view.getId();
         //忘记密码
-        if (i == R.id.auth_forget_password_tv) {
-            ActivityManager.gotoActivity(mContext, RetrieveActivity.class);
+        if (i == R.id.for_password) {
+            ActivityManager.gotoActivity(mContext, ForgetPasswordActivity.class);
         }
         //登录
         else if (i == R.id.auth_login_btn) {
@@ -148,7 +165,10 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements IL
 
     @Override
     public void loginSuccess(LoginRes response) {
-        ActivityManager.gotoActivity(mContext, MainActivity.class);
+        Intent intent = new Intent(mContext, MainActivity.class);
+        intent.putExtra("simple", response.getSimpleStatus() == 2);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        ActivityManager.gotoActivity(mContext, intent);
         finish();
     }
 }

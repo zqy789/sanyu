@@ -77,7 +77,8 @@ public class GoodsPostActivity extends BaseMvpActivity<GoodsPostPresenter> imple
 
     @Override
     protected void initView() {
-
+        editExpressName.setText("韵达快递");
+        editExpressName.setSelection(editExpressName.getText().toString().trim().length());
     }
 
     @Override

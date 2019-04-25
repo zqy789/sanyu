@@ -14,6 +14,8 @@ import com.ybkj.syzs.deliver.manager.UserDataManager;
 import com.ybkj.syzs.deliver.module.auth.presenter.ModifyPhonePresenter;
 import com.ybkj.syzs.deliver.module.auth.view.ModifyPhoneView;
 import com.ybkj.syzs.deliver.module.user.activity.UserInfoActivity;
+import com.ybkj.syzs.deliver.ui.view.ClearEditText;
+import com.ybkj.syzs.deliver.utils.InputTextHelper;
 import com.ybkj.syzs.deliver.utils.ToastUtil;
 import com.ybkj.syzs.deliver.utils.VerificationCodeUtil;
 
@@ -26,10 +28,8 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
  * 修改手机号码
  */
 public class ModifyPhoneActivity extends BaseMvpActivity<ModifyPhonePresenter> implements ModifyPhoneView {
-
-
     @BindView(R.id.auth_register_phone_code_et)
-    EditText authRegisterPhoneCodeEt;
+    ClearEditText authRegisterPhoneCodeEt;
     @BindView(R.id.auth_register_code_btn)
     TextView authRegisterCodeBtn;
     @BindView(R.id.auth_code_et)
@@ -62,7 +62,11 @@ public class ModifyPhoneActivity extends BaseMvpActivity<ModifyPhonePresenter> i
 
     @Override
     protected void initData() {
-        authRegisterPhoneCodeEt.setHint("请输入新手机号码");
+        new InputTextHelper.Builder(this)
+                .setMain(authBtnNext)
+                .addView(authRegisterPhoneCodeEt)
+                .addView(authCodeEt)
+                .build();
     }
 
 

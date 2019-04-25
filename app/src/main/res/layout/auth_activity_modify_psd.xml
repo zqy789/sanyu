@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/layout_bg"
     android:layout_height="match_parent"
     android:background="@color/base_white"
     android:orientation="vertical"
@@ -11,143 +12,125 @@
     <com.ybkj.syzs.deliver.ui.view.MyActionBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:hideBottomLine="true" />
+        app:imageLeft="@mipmap/head_back_black"
+        app:title="修改密码" />
 
-    <TextView
-        style="@style/auth_text_login"
-        android:layout_marginStart="@dimen/base_dimen_20"
-        android:layout_marginTop="@dimen/base_dimen_25"
-        android:text="@string/auth_modify_password" />
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/base_dimen_20"
-        android:orientation="vertical">
+        android:layout_marginTop="@dimen/base_dimen_30"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/base_dimen_28"
+        android:paddingRight="@dimen/base_dimen_28">
 
+        <TextView
+            style="@style/auth_new_login_tip"
+            android:layout_marginTop="@dimen/base_dimen_15"
+            android:text="手机号"
+            android:textColor="@color/auth_color_text_3" />
 
         <EditText
             android:id="@+id/phone_code_et"
-            style="@style/auth_login_edit_text_style"
+            style="@style/auth_new_login_edit_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dimen_38"
+            android:layout_marginTop="@dimen/base_dimen_9"
             android:enabled="false"
-            android:hint="@string/auth_input_phone"
-            android:inputType="number"
+            android:hint="请输入手机号"
+            android:inputType="phone"
             android:maxLength="11" />
-
-
+        <!--验证码-->
+        <include layout="@layout/auth_include_sms_code" />
+        <!--原密码-->
         <TextView
-            android:id="@+id/auth_register_code_btn"
-            style="@style/auth_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginRight="@dimen/base_dimen_20"
-            android:gravity="center"
-            android:text="@string/auth_phone_code" />
+            style="@style/auth_new_login_tip"
+            android:layout_marginTop="@dimen/base_dimen_15"
+            android:text="原密码"
+            android:textColor="@color/auth_color_text_3" />
 
-    </FrameLayout>
-
-    <EditText
-        android:id="@+id/auth_code_et"
-        style="@style/auth_login_edit_text_style"
-        android:layout_marginTop="@dimen/base_dimen_20"
-        android:hint="@string/auth_input_phone_code"
-        android:inputType="number"
-        android:maxLength="6" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/base_dimen_20"
-        android:layout_marginTop="@dimen/base_dimen_20"
-        android:layout_marginRight="@dimen/base_dimen_20"
-        android:background="@drawable/auth_shape_edit_bg_focus_dark">
-
-        <EditText
+        <com.ybkj.syzs.deliver.ui.view.ClearEditText
             android:id="@+id/auth_old_password_et"
-            style="@style/auth_login_edit_text_style"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:hint="@string/auth_input_old_password"
+            style="@style/auth_new_login_edit_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dimen_38"
+            android:layout_marginTop="@dimen/base_dimen_9"
+            android:hint="请输入原密码"
             android:inputType="textPassword"
             android:maxLength="16" />
 
-        <ImageButton
-            android:id="@+id/password_visible"
-            android:layout_width="wrap_content"
+        <!--新密码-->
+        <TextView
+            style="@style/auth_new_login_tip"
+            android:layout_marginTop="@dimen/base_dimen_15"
+            android:text="新密码"
+            android:textColor="@color/auth_color_text_3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@null"
-            android:paddingLeft="@dimen/base_dimen_15"
-            android:src="@mipmap/ic_password_visible"
-            android:visibility="gone" />
-    </RelativeLayout>
+            android:layout_marginTop="@dimen/base_dimen_9">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/base_dimen_20"
-        android:layout_marginTop="@dimen/base_dimen_20"
-        android:layout_marginRight="@dimen/base_dimen_20"
-        android:background="@drawable/auth_shape_edit_bg_focus_dark">
+            <com.ybkj.syzs.deliver.ui.view.ClearEditText
+                android:id="@+id/auth_password_et"
+                style="@style/auth_new_login_edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base_dimen_38"
+                android:hint="请输入新密码"
+                android:inputType="textPassword"
+                android:maxLength="16" />
 
-        <EditText
-            android:id="@+id/auth_new_password_et"
-            style="@style/auth_login_edit_text_style"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:hint="@string/auth_new_old_password"
-            android:inputType="textPassword"
-            android:maxLength="16" />
+            <TextView
+                android:id="@+id/password_has_tv"
+                style="@style/auth_14_b4a"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/base_white"
+                android:drawableStart="@mipmap/auth_default"
+                android:drawablePadding="@dimen/base_dimen_5"
+                android:visibility="gone" />
+        </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/new_password_visible"
-            android:layout_width="wrap_content"
+
+        <!--重复新密码-->
+        <TextView
+            style="@style/auth_new_login_tip"
+            android:layout_marginTop="@dimen/base_dimen_15"
+            android:text="重复新密码"
+            android:textColor="@color/auth_color_text_3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@null"
-            android:paddingLeft="@dimen/base_dimen_15"
-            android:src="@mipmap/ic_password_visible"
-            android:visibility="gone" />
-    </RelativeLayout>
+            android:layout_marginTop="@dimen/base_dimen_9">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/base_dimen_20"
-        android:layout_marginTop="@dimen/base_dimen_20"
-        android:layout_marginRight="@dimen/base_dimen_20"
-        android:background="@drawable/auth_shape_edit_bg_focus_dark">
+            <com.ybkj.syzs.deliver.ui.view.ClearEditText
+                android:id="@+id/auth_password_re_et"
+                style="@style/auth_new_login_edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base_dimen_38"
+                android:layout_marginTop="@dimen/base_dimen_9"
+                android:hint="请再次输入新密码"
+                android:inputType="textPassword"
+                android:maxLength="16" />
 
-        <EditText
-            android:id="@+id/auth_new_password_re_et"
-            style="@style/auth_login_edit_text_style"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:hint="请再次输入新密码"
-            android:inputType="textPassword"
-            android:maxLength="16" />
+            <TextView
+                android:id="@+id/password_Inequality_tv"
+                style="@style/auth_14_b4a"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/base_white"
+                android:drawableStart="@mipmap/auth_default"
+                android:drawablePadding="@dimen/base_dimen_5"
+                android:visibility="gone" />
+        </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/new_password_re_visible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@null"
-            android:paddingLeft="@dimen/base_dimen_15"
-            android:src="@mipmap/ic_password_visible"
-            android:visibility="gone" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/auth_btn_finish"
-        style="@style/auth_btn_login_shape"
+        style="@style/auth_common_btn2"
         android:layout_marginTop="@dimen/base_dimen_30"
+        android:layout_marginLeft="@dimen/base_dimen_28"
+        android:layout_marginRight="@dimen/base_dimen_28"
         android:text="@string/auth_btn_finish" />
 </LinearLayout>

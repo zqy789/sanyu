@@ -3,9 +3,13 @@ package com.ybkj.syzs.deliver.module.order.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
@@ -20,6 +24,7 @@ import com.uuzuche.lib_zxing.activity.CaptureFragment;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.ybkj.syzs.deliver.R;
 import com.ybkj.syzs.deliver.base.BaseActivity;
+import com.ybkj.syzs.deliver.module.user.activity.PictureChoseActivity;
 import com.ybkj.syzs.deliver.utils.FullScreenUtils;
 import com.ybkj.syzs.deliver.utils.ToastUtil;
 
@@ -34,9 +39,13 @@ import butterknife.OnClick;
  */
 public class ScanCodeActivity extends BaseActivity {
     public static final int EXPRESS_SUCCESS = 81;
+    public static final int REQUEST_ALBUM = 102;
     //返回
     @BindView(R.id.scan_code_cancel)
     ImageView cancel;
+
+    @BindView(R.id.tv_from_album)
+    TextView tvFromAlbum;
     /**
      * 二维码解析回调函数
      */
@@ -111,6 +120,13 @@ public class ScanCodeActivity extends BaseActivity {
 //        getSupportFragmentManager().beginTransaction().replace(R.id.scan_code_frame, captureFragment).commit();
 
         checkPermission();
+
+        tvFromAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findPicture();
+            }
+        });
     }
 
     /**
@@ -150,5 +166,41 @@ public class ScanCodeActivity extends BaseActivity {
         }
     }
 
+    @SuppressLint("CheckResult")
+    private void findPicture() {
+        int storagePermission = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (storagePermission != PackageManager.PERMISSION_GRANTED) {
+            new RxPermissions(mContext).request(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .subscribe(aBoolean -> {
+                                if (aBoolean) {
+                                    Intent intent = new Intent(mContext, PictureChoseActivity.class);
+                                    startActivityForResult(intent, REQUEST_ALBUM);
+                                } else {
+                                    ToastUtil.showShort("获取相机权限失败");
+                                }
+                            },
+                            Throwable::printStackTrace
+                    );
+        } else {
+            Intent intent = new Intent(mContext, PictureChoseActivity.class);
+            startActivityForResult(intent, REQUEST_ALBUM);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == PictureChoseActivity.SELECT_PICTURE_SUCCESS) {
+            parsePhoto(data.getStringExtra("path"));
+        }
+    }
+
+    private void parsePhoto(String path) {
+        if (TextUtils.isEmpty(path)) {
+            return;
+        }
+        CodeUtils.analyzeBitmap(path, analyzeCallback);
+
+    }
 
 }

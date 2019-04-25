@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_white"
+    android:orientation="vertical">
+
+    <com.ybkj.syzs.deliver.ui.view.MyActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="账号选择" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/activity_background"
+        android:padding="@dimen/base_dimen_15"
+        android:text="系统检测到您的手机号绑定多个账号，请选择需要重置密码的账号"
+        android:textColor="@color/auth_color_999"
+        android:textSize="@dimen/base_text_size_12" />
+
+    <com.ybkj.syzs.deliver.ui.view.recyclerview.XRecyclerView
+        android:id="@+id/recycler_account"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/base_dimen_15" />
+</LinearLayout>

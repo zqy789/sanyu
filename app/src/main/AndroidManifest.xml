@@ -81,9 +81,6 @@
             android:name=".module.auth.activity.ModifyPsdActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".module.auth.activity.ResetPasswordActivity"
-            android:launchMode="singleTask" />
-        <activity
             android:name=".module.auth.activity.RetrieveActivity"
             android:launchMode="singleTask" />
         <activity
@@ -112,6 +109,9 @@
             android:name=".module.order.activity.ScanCodeActivity"
             android:launchMode="singleTask" />
         <activity android:name=".module.user.activity.PictureChoseActivity" />
+        <activity android:name=".module.auth.activity.ResetPasswordActivity" />
+        <activity android:name=".module.auth.activity.AccountChoseActivity" />
+        <activity android:name=".module.auth.activity.ForgetPasswordActivity" />
     </application>
 
 </manifest>

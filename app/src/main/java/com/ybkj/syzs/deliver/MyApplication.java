@@ -3,8 +3,13 @@ package com.ybkj.syzs.deliver;
 import android.app.Activity;
 import android.app.Application;
 import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.coder.zzq.smartshow.core.SmartShow;
+import com.coder.zzq.smartshow.toast.IPlainToastSetting;
+import com.coder.zzq.smartshow.toast.SmartToast;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -79,6 +84,7 @@ public class MyApplication extends Application {
         initLog();
         //激活XT屏幕适配方案
         initScreenAdapter();
+        initToast();
     }
 
     //初始化XT适配方案
@@ -170,4 +176,21 @@ public class MyApplication extends Application {
     }
 
 
+    private void initToast() {
+        SmartShow.init(mContext);
+
+        SmartToast.plainSetting()
+//                .backgroundColorRes(R.color.colorPrimary)
+//
+//                .textSizeSp(18)
+//
+//                .textBold(true)
+                .customView(new IPlainToastSetting.CustomViewCallback() {
+                    @Override
+                    public View createToastView(LayoutInflater inflater) {
+
+                        return inflater.inflate(R.layout.custom_toast, null);
+                    }
+                });
+    }
 }

@@ -1,6 +1,7 @@
 package com.ybkj.syzs.deliver.base;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import com.ybkj.syzs.deliver.dagger.component.DaggerFragmentComponent;
 import com.ybkj.syzs.deliver.dagger.component.FragmentComponent;
 import com.ybkj.syzs.deliver.dagger.module.FragmentModule;
 import com.ybkj.syzs.deliver.manager.ActivityManager;
+import com.ybkj.syzs.deliver.manager.UserDataManager;
 import com.ybkj.syzs.deliver.module.auth.activity.LoginActivity;
 import com.ybkj.syzs.deliver.ui.dialog.TipDialog;
 import com.ybkj.syzs.deliver.utils.LogUtil;
@@ -73,9 +75,13 @@ public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragm
     public void onLoginError() {
         if (loginCommonDialog == null) {
             loginCommonDialog = new TipDialog(mContext);
+            loginCommonDialog.setTitleText("登录失效");
             loginCommonDialog.setContentText("登录失效，请登录");
             loginCommonDialog.setOnConfirmButtonClickListener((Dialog dialog, View view) -> {
-                ActivityManager.gotoActivity(mContext, LoginActivity.class);
+                UserDataManager.clearLoginInfo();
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                ActivityManager.gotoActivity(mContext, intent);
                 loginCommonDialog.dismiss();
             });
             loginCommonDialog.show();

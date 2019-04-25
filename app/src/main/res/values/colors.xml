@@ -7,6 +7,7 @@
     <color name="activity_background">#F8F8F9</color>
     <color name="ripple_background">#f0f0f0</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent_60">#99000000</color>
     <color name="status_bar_color">#252932</color>
     <color name="base_white">#ffffff</color>
     <color name="black">#000000</color>
@@ -46,10 +47,12 @@
     <color name="project_base_color_text_ccc">#ccc</color>
     <color name="project_base_color_background1">#f5f5f5</color>
     <color name="project_base_color_background_f4">#f4f4f4</color>
+    <color name="auth_btn_enable_false">#afe2c4</color>
 
     <color name="order_status_orange">#FF7E35</color>
 
     <color name="scan_bg">#cc12111A</color>
+    <color name="auth_color_warning">#F3B631</color>
 
 
 </resources>

@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.ybkj.syzs.deliver.R;
 import com.ybkj.syzs.deliver.utils.LogUtil;
@@ -29,6 +31,8 @@ public abstract class BaseFragment extends RxFragment implements View.OnClickLis
     private boolean hidden;
     private boolean onResume;
     private boolean onPause;
+
+    private View mNetEmptyView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -220,6 +224,22 @@ public abstract class BaseFragment extends RxFragment implements View.OnClickLis
 
     }
 
+    /**
+     * 设置当前页面RecycleView加载不出数据的时候显示的view
+     *
+     * @param recyclerView
+     */
+    protected void showNetRecycleEmptyView(RecyclerView recyclerView) {
+        if (mNetEmptyView == null) {
+            mNetEmptyView = View.inflate(mContext, getNetEmptyLayoutRes(), null);
+        }
+
+        RecyclerView.Adapter recyclerViewAdapter = recyclerView.getAdapter();
+        if (recyclerViewAdapter != null && recyclerViewAdapter instanceof BaseQuickAdapter) {
+            ((BaseQuickAdapter) recyclerViewAdapter).setEmptyView(mNetEmptyView);
+            recyclerViewAdapter.notifyDataSetChanged();
+        }
+    }
     //点击错误界面时触发刷新
     protected void tryData(int id) {
     }
@@ -231,5 +251,14 @@ public abstract class BaseFragment extends RxFragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+    }
+
+    /**
+     * 自定义无数据界面
+     *
+     * @return
+     */
+    protected int getNetEmptyLayoutRes() {
+        return R.layout.empty_view;
     }
 }

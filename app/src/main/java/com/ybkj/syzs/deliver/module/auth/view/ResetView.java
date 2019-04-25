@@ -10,4 +10,8 @@ import com.ybkj.syzs.deliver.base.BaseView;
  */
 public interface ResetView extends BaseView {
     void resetSuccess();
+
+    void passwordFail();
+
+    void passwordPass();
 }
