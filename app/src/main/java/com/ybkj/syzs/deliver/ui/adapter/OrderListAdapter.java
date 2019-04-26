@@ -61,13 +61,13 @@ public class OrderListAdapter extends XBaseAdapter<OrderListRes.ListBean> {
 
     @Override
     protected void convert(XBaseViewHolder helper, OrderListRes.ListBean item) {
-        helper.setText(R.id.tv_order_num, "订单号:" + item.getOrderNo());
-        helper.setText(R.id.tv_time, "下单时间:" + DateUtil.longToTimeStr(item.getAddTime(), DateUtil.dateFormat2));
+        helper.setText(R.id.tv_order_num, "订单号：" + item.getOrderNo());
+        helper.setText(R.id.tv_time, "下单时间：" + DateUtil.longToTimeStr(item.getAddTime(), DateUtil.dateFormat2));
         helper.setText(R.id.tv_receiver_name, item.getReceiverName() + "    " + item.getReceiverPhone());
         helper.setText(R.id.tv_receiver_address, getReceiverAddaress(item));
         TextView tvOrderStatus = helper.getView(R.id.tv_order_status);
         if (item.getOrderStatus() == ORDER_STATUS_POSTED) {
-            helper.setText(R.id.tv_goods_num, "订单商品" + (item.getGoods() == null ? 0 : item.getGoods().size()) + "件");
+            helper.setText(R.id.tv_goods_num, "订单商品：" + (item.getGoods() == null ? 0 : item.getGoods().size()) + "件");
             helper.setText(R.id.tv_order_status, "已发货");
             tvOrderStatus.setTextColor(ResourcesUtil.getColor(R.color.auth_color_666));
         } else if (item.getOrderStatus() == ORDER_STATUS_WAIT_POST) {

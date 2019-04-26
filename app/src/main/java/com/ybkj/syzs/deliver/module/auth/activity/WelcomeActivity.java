@@ -77,7 +77,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
 
     @Override
     protected void initData() {
-        setTimeCountDown(3);
+        setTimeCountDown(2);
         // checkPermission();
         presenter.getVersionInfo(false);
     }
@@ -171,7 +171,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
         VersionRes.AppVersionBean appUpdateRes = versionRes.getAppVersion();
         if (appUpdateRes == null) {
             isUpdate = false;
-            goMianActivity();
+            // goMianActivity();
             return;
         }
         String oldVersion = SystemUtil.getAppVersionName(mContext);
@@ -190,7 +190,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
         }
         if (!canUpdate) {
             timeFinish = true;
-            goMianActivity();
+            //  goMianActivity();
             return;
         }
         isUpdate = true;
