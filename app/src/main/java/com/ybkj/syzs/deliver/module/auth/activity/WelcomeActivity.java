@@ -77,7 +77,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
 
     @Override
     protected void initData() {
-        setTimeCountDown(3);
+        setTimeCountDown(2);
         // checkPermission();
         presenter.getVersionInfo(false);
     }
@@ -100,7 +100,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
                             if (aBoolean) {
                                 //true表示获取权限成功（android6.0以下默认为true）
                                 permissionFinish = true;
-                                goMianActivity();
+                                // goMianActivity();
                             } else {
                                 TipDialog tipDialog = new TipDialog(mContext);
                                 tipDialog.setTitleText("权限授予");
@@ -158,7 +158,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
                 .mainThread()).map(increaseTime -> splashTotalCountdownTime
                 - increaseTime.intValue()).take(splashTotalCountdownTime + 1).subscribe(integer -> {
 
-            if (integer == 0 && isLogin == false && !isUpdate) {
+            if (integer == 0 && !isUpdate) {
                 timeFinish = true;
                 goMianActivity();
             }
@@ -171,7 +171,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
         VersionRes.AppVersionBean appUpdateRes = versionRes.getAppVersion();
         if (appUpdateRes == null) {
             isUpdate = false;
-            goMianActivity();
+            // goMianActivity();
             return;
         }
         String oldVersion = SystemUtil.getAppVersionName(mContext);
@@ -190,7 +190,7 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
         }
         if (!canUpdate) {
             timeFinish = true;
-            goMianActivity();
+            //  goMianActivity();
             return;
         }
         isUpdate = true;

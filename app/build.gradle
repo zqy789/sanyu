@@ -6,8 +6,8 @@ android {
         applicationId "com.ybkj.syzs.deliver"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 6
+        versionName "1.0.5"
         flavorDimensions "20"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //设计稿上的屏幕宽度
