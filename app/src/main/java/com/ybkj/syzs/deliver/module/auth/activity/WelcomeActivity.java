@@ -278,7 +278,9 @@ public class WelcomeActivity extends BaseMvpActivity<CheckVersionPresenter> impl
     protected void onRestart() {
         super.onRestart();
         if (!finalCanForceUpdate) {
-            updateDialog.dismiss();
+            if (updateDialog != null) {
+                updateDialog.dismiss();
+            }
         }
     }
 }
