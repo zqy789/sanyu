@@ -6,8 +6,8 @@ android {
         applicationId "com.ybkj.syzs.deliver"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 6
-        versionName "1.0.5"
+        versionCode 7
+        versionName "1.0.6"
         flavorDimensions "20"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //设计稿上的屏幕宽度
@@ -38,7 +38,7 @@ android {
             multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.signing
-            resValue "string", "app_name", "三域发货"
+            resValue "string", "app_name", "U趣发货端"
             android.applicationVariants.all {
                 variant ->
                     variant.outputs.all {
@@ -52,7 +52,7 @@ android {
             debuggable true
             zipAlignEnabled true //zip优化
             signingConfig signingConfigs.signing
-            resValue "string", "app_name", "三域发货-debug"
+            resValue "string", "app_name", "U趣发货端-debug"
         }
     }
     // 多渠道/多环境 的不同配置

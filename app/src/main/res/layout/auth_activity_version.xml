@@ -22,7 +22,7 @@
         style="@style/auth_14_a4a"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/base_dimen_22"
-        android:text="三域商贸"
+        android:text="U趣发货端"
         android:textColor="@color/auth_color_text_3"
         android:textSize="@dimen/base_text_size_18" />
 

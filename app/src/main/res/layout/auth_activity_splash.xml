@@ -4,10 +4,27 @@
     android:layout_height="match_parent"
     android:background="@color/base_white">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@mipmap/auth_icon_splash" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/base_dimen_120">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/auth_icon_splash" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_dimen_6"
+            android:text="U趣发货端"
+            android:textColor="#E17407"
+            android:textSize="@dimen/base_text_size_15" />
+    </LinearLayout>
+
 
 </RelativeLayout>
