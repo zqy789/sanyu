@@ -15,18 +15,19 @@ import com.ybkj.syzs.deliver.utils.ImageLoadUtils;
  * Created on 2019/4/19.
  * Email 15384030400@163.com
  */
-public class OrderDetailGoodAdapter extends XBaseAdapter<OrderDetailRes.OrderBean.GoodsBean> {
+public class OrderDetailGoodAdapter extends XBaseAdapter<OrderDetailRes.OrderBean.ExpressBoListBean.GoodsBean> {
     public OrderDetailGoodAdapter(Context context) {
         super(context);
     }
 
     @Override
     protected int getLayoutResId(int viewType) {
+
         return R.layout.recycle_item_order_detail_goods;
     }
 
     @Override
-    protected void convert(XBaseViewHolder helper, OrderDetailRes.OrderBean.GoodsBean item) {
+    protected void convert(XBaseViewHolder helper, OrderDetailRes.OrderBean.ExpressBoListBean.GoodsBean item) {
         helper.setText(R.id.tv_title, item.getGoodsName());
         RoundImageView imageGoods = helper.getView(R.id.image_goods);
         ImageLoadUtils.loadUrlImage(mContext, item.getGoodsImg(), imageGoods);

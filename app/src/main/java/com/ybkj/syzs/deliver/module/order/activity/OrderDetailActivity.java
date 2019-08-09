@@ -1,18 +1,24 @@
 package com.ybkj.syzs.deliver.module.order.activity;
 
+import android.content.Intent;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ybkj.syzs.deliver.R;
 import com.ybkj.syzs.deliver.base.BaseMvpActivity;
 import com.ybkj.syzs.deliver.bean.response.OrderDetailRes;
+import com.ybkj.syzs.deliver.manager.ActivityManager;
 import com.ybkj.syzs.deliver.module.order.presenter.OrderDetailPresenter;
 import com.ybkj.syzs.deliver.module.order.view.IOrderDetailView;
 import com.ybkj.syzs.deliver.ui.adapter.OrderDetailGoodAdapter;
+import com.ybkj.syzs.deliver.ui.adapter.OrderDetailListAdapter;
 import com.ybkj.syzs.deliver.ui.view.recyclerview.XRecyclerView;
 import com.ybkj.syzs.deliver.utils.DateUtil;
+import com.ybkj.syzs.deliver.web.BaseWebviewActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,12 +48,14 @@ public class OrderDetailActivity extends BaseMvpActivity<OrderDetailPresenter> i
     TextView tvPoster;
     @BindView(R.id.tv_post_time)
     TextView tvPostTime;
+    @BindView(R.id.scroll)
+    NestedScrollView scroll;
 
     TextView tvOrderNo;
     TextView tvStatus;
     TextView tvAddTime;
 
-    private OrderDetailGoodAdapter goodAdapter;
+    private OrderDetailListAdapter orderDetailListAdapter;
 
     @Override
     protected void injectPresenter() {
@@ -66,14 +74,24 @@ public class OrderDetailActivity extends BaseMvpActivity<OrderDetailPresenter> i
 
     @Override
     protected void initView() {
-        goodAdapter = new OrderDetailGoodAdapter(mContext);
-        orderRecycle.setAdapter(goodAdapter);
+        orderDetailListAdapter = new OrderDetailListAdapter(mContext);
+        orderRecycle.setAdapter(orderDetailListAdapter);
         orderRecycle.setNestedScrollingEnabled(false);
         View headerView = LayoutInflater.from(mContext).inflate(R.layout.order_good_header, null);
         tvOrderNo = headerView.findViewById(R.id.tv_order_no);
         tvStatus = headerView.findViewById(R.id.tv_status);
         tvAddTime = headerView.findViewById(R.id.tv_add_time);
-        goodAdapter.addHeaderView(headerView);
+        orderDetailListAdapter.addHeaderView(headerView);
+        orderDetailListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(mContext, BaseWebviewActivity.class);
+                intent.putExtra("title","查看物流");
+                intent.putExtra("url","http://fwmfile.qianhaishengshi.com/shop/index.html#/"+"?expressMailno="+orderDetailListAdapter.getItem(position).getExpressOrderNumber());
+//                intent.putExtra("orderNo", orderDetailListAdapter.getItem(position).getOrderNo());
+                ActivityManager.gotoActivity(mContext, intent);
+            }
+        });
     }
 
     @Override
@@ -88,15 +106,16 @@ public class OrderDetailActivity extends BaseMvpActivity<OrderDetailPresenter> i
         tvReceiverName.setText(orderBean.getReceiverName() + "    " + orderBean.getReceiverPhone());
         tvAddress.setText("地址：" + orderBean.getReceiverProvince() + orderBean.getReceiverCity() + orderBean.getReceiverCounty() + orderBean.getReceiverDetail());
 
-        tvExpressN0.setText("快递单号：" + orderBean.getExpressOrderNumber());
-        tvExpressName.setText("快递名称：" + orderBean.getExpressName());
-        tvPoster.setText("发货员：" + orderBean.getOperatorAccount());
-        tvPostTime.setText("发货时间：" + DateUtil.longToTimeStr(orderBean.getExpressTime(), DateUtil.dateFormat2));
-        goodAdapter.setNewData(response.getOrder().getGoods());
+//        tvExpressN0.setText("快递单号：" + response.getOrder().getExpressOrderNumber());
+//        tvExpressName.setText("快递名称：" + orderBean.getExpressName());
+//        tvPoster.setText("发货员：" + orderBean.getOperatorAccount());
+//        tvPostTime.setText("发货时间：" + DateUtil.longToTimeStr(orderBean.getExpressTime(), DateUtil.dateFormat2));
+        orderDetailListAdapter.setNewData(response.getOrder().getExpressBoList());
 
         tvOrderNo.setText("订单号：" + orderBean.getOrderNo());
         tvStatus.setText("已发货");
         tvAddTime.setText("下单时间：" + DateUtil.longToTimeStr(orderBean.getAddTime(), DateUtil.dateFormat2));
+        orderRecycle.setFocusable(false);
     }
 
 

@@ -8,6 +8,7 @@ import com.ybkj.syzs.deliver.bean.response.OrderListRes;
 import com.ybkj.syzs.deliver.common.Constants;
 import com.ybkj.syzs.deliver.module.order.view.IOrderSearchView;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -34,11 +35,16 @@ public class OrderSearchPresenter extends BaseRxPresenter<IOrderSearchView> {
 
     }
 
-    public void getOrderData(String keyword) {
+    public void getOrderData(String keyword, Date date) {
         OrderListReq orderListReq = new OrderListReq();
         orderListReq.setKey(keyword);
         orderListReq.setPageNum(1);
         orderListReq.setOrderStatus(0);
+        if(date ==null){
+            orderListReq.setStartTimestamp(1);
+        }else{
+            orderListReq.setStartTimestamp(date.getTime());
+        }
         sendHttpRequest(apiService.getOrderList(orderListReq), Constants.REQUEST_CODE_1, false);
     }
 }

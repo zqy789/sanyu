@@ -51,17 +51,22 @@ public class GoodsPostPresenter extends BaseRxPresenter<IGoodsPostView> {
 
         List<GoodPostReq.ListBean> goodsList = new ArrayList<>();
         for (OrderListRes.ListBean.GoodsBean good : goods) {
-            if (TextUtils.isEmpty(good.getGoodsPublicCode())) {
-                ToastUtil.showShort("还有商品未录入防伪码，请先将所有商品录入防伪码再进行发货");
-                return;
+//            if (TextUtils.isEmpty(good.getGoodsPublicCode())) {
+//                ToastUtil.showShort("还有商品未录入防伪码，请先将所有商品录入防伪码再进行发货");
+//                return;
+//            }
+            if (!TextUtils.isEmpty(good.getGoodsPublicCode())) {
+                GoodPostReq.ListBean postGood = new GoodPostReq.ListBean();
+                postGood.setOrderGoodsNo(good.getOrderGoodsNo());
+                postGood.setGoodsPublicCode(good.getGoodsPublicCode());
+                goodsList.add(postGood);
             }
-            GoodPostReq.ListBean postGood = new GoodPostReq.ListBean();
-            postGood.setOrderGoodsNo(good.getOrderGoodsNo());
-            postGood.setGoodsPublicCode(good.getGoodsPublicCode());
-            goodsList.add(postGood);
+        }
+        if(goodsList.size() == 0){
+            ToastUtil.showShort("还未录入防伪码，请先录入防伪码再进行发货");
+            return;
         }
         req.setList(goodsList);
         sendHttpRequest(apiService.postGoods(req), Constants.REQUEST_CODE_1);
-
     }
 }

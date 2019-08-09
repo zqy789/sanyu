@@ -222,6 +222,7 @@
     <string name="auth_franchise_role_enter">以加盟商身份进入</string>
     <string name="user_order">用户订单</string>
     <string name="order_wait_post">待发货</string>
+    <string name="order_wait_stock">待出库</string>
     <string name="order_posted">已发货</string>
     <string name="good_post">商品发货</string>
 

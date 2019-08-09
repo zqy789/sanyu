@@ -129,6 +129,7 @@
         <Button
             android:id="@+id/btn_post"
             style="@style/auth_common_btn"
+            android:layout_width="170dp"
             android:text="发货" />
 
     </LinearLayout>

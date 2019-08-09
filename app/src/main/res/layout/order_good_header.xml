@@ -14,6 +14,13 @@
         android:id="@+id/tv_status"
         style="@style/auth_common_text3"
         android:layout_alignParentRight="true" />
+    <TextView
+        android:id="@+id/tv_order_number"
+        style="@style/auth_common_text9_small"
+        android:textSize="@dimen/base_text_size_14"
+        android:layout_alignTop="@+id/tv_order_no"
+        android:layout_marginRight="@dimen/base_dimen_12"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/tv_add_time"

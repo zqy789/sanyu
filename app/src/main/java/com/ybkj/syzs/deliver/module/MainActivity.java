@@ -21,10 +21,12 @@ import com.ybkj.syzs.deliver.module.auth.activity.ModifyPsdActivity;
 import com.ybkj.syzs.deliver.module.order.activity.OrderSearchActivity;
 import com.ybkj.syzs.deliver.module.order.activity.PostedOrderFragment;
 import com.ybkj.syzs.deliver.module.order.activity.WaitPostOrderFragment;
+import com.ybkj.syzs.deliver.module.order.activity.WaitStockOrderFragment;
 import com.ybkj.syzs.deliver.module.user.activity.UserInfoActivity;
 import com.ybkj.syzs.deliver.ui.adapter.ViewPagerAdapter;
 import com.ybkj.syzs.deliver.ui.dialog.TipDialog;
 import com.ybkj.syzs.deliver.utils.ResourcesUtil;
+import com.ybkj.syzs.deliver.web.BaseWebviewActivity;
 
 import butterknife.BindView;
 
@@ -33,6 +35,7 @@ import butterknife.BindView;
  * - @Description:  首页
  */
 public class MainActivity extends BaseMvpActivity {
+    private static final int ORDER_STATUS_WAIT_STOCK = 2;//订单状态：待出库
     private static final int ORDER_STATUS_WAIT_POST = 3;//订单状态：待发货
     private static final int ORDER_STATUS_POSTED = 5;//订单状态：已发货
     @BindView(R.id.image_avatar)
@@ -67,12 +70,15 @@ public class MainActivity extends BaseMvpActivity {
     protected void initView() {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getSupportFragmentManager());
+        tabLayout.addTab(tabLayout.newTab().setText(ResourcesUtil.getString(R.string.order_wait_stock)));
         tabLayout.addTab(tabLayout.newTab().setText(ResourcesUtil.getString(R.string.order_wait_post)));
         tabLayout.addTab(tabLayout.newTab().setText(ResourcesUtil.getString(R.string.order_posted)));
 
+        WaitStockOrderFragment waitStockOrderFragment = WaitStockOrderFragment.getInstance(ORDER_STATUS_WAIT_STOCK);
         WaitPostOrderFragment waitPostOrderFragment = WaitPostOrderFragment.getInstance(ORDER_STATUS_WAIT_POST);
         PostedOrderFragment postedOrderFragment = PostedOrderFragment.getInstance(ORDER_STATUS_POSTED);
 
+        viewPagerAdapter.addFragment(waitStockOrderFragment, ResourcesUtil.getString(R.string.order_wait_stock));
         viewPagerAdapter.addFragment(waitPostOrderFragment, ResourcesUtil.getString(R.string.order_wait_post));
         viewPagerAdapter.addFragment(postedOrderFragment, ResourcesUtil.getString(R.string.order_posted));
 
@@ -91,6 +97,11 @@ public class MainActivity extends BaseMvpActivity {
             @Override
             public void onClick(View v) {
                 ActivityManager.gotoActivity(mContext, OrderSearchActivity.class);
+//                Intent intent = new Intent(MainActivity.this, BaseWebviewActivity.class);
+//                intent.putExtra("hasHead",false);
+//                intent.putExtra("url","http://192.168.1.112/fahuo/index.html#/");
+//                intent.putExtra("orderNo", orderDetailListAdapter.getItem(position).getOrderNo());
+//                ActivityManager.gotoActivity(mContext, intent);
             }
         });
     }

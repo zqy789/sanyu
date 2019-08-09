@@ -28,26 +28,30 @@ import java.util.Date;
  * Email 15384030400@163.com
  */
 public class TimeSortView extends FrameLayout {
+    private static final int MODE_DAY = 100;
     private static final int MODE_MONTH = 101;
     private static final int MODE_YEAR = 102;
     private Context mContext;
+    private TextView tvCurrentDay;
     private TextView tvBig;
     private TextView tvSmall;
+    private TextView tvDay;
     private TextView tvMonth;
     private TextView tvYear;
     private LinearLayout layoutMode;
     private RadioGroup radioGroupTime;
     private LinearLayout layoutTimeSelect;
-    private RadioButton radio_current;
+    private RadioButton radio_day;
+    private RadioButton radio_current_month;
     private RadioButton radio_this_year;
     private RadioButton radio_last_month;
     private RadioButton radio_recent_year;
     private RadioButton radio_all;
-    private int mode = MODE_MONTH;
+    private int mode = MODE_DAY;
 
     private int selectColor = R.color.project_base_color_green;
 
-    private TimePickerView yearPickerView, monthPickerView;
+    private TimePickerView yearPickerView, monthPickerView,dayPickerView;
     private OnModeChangeListener onModeChangeListener;
 
     public TimeSortView(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -55,13 +59,17 @@ public class TimeSortView extends FrameLayout {
         this.mContext = context;
 
         LayoutInflater.from(mContext).inflate(R.layout.project_base_layout_time_sort, this);
+
+        tvCurrentDay = findViewById(R.id.tv_current_day);
         tvBig = findViewById(R.id.tv_big);
         tvSmall = findViewById(R.id.tv_small);
+        tvDay = findViewById(R.id.tv_day);
         tvMonth = findViewById(R.id.tv_month);
         tvYear = findViewById(R.id.tv_year);
         layoutMode = findViewById(R.id.layout_mode);
         radioGroupTime = findViewById(R.id.radio_group_time);
-        radio_current = findViewById(R.id.radio_current);
+        radio_day = findViewById(R.id.radio_day);
+        radio_current_month = findViewById(R.id.radio_current_month);
         radio_this_year = findViewById(R.id.radio_this_year);
         radio_last_month = findViewById(R.id.radio_last_month);
         radio_recent_year = findViewById(R.id.radio_recent_year);
@@ -71,14 +79,25 @@ public class TimeSortView extends FrameLayout {
         layoutTimeSelect = findViewById(R.id.layout_time_select);
 
         String currentTime = DateUtil.getTimeStr();
+        tvCurrentDay.setText(currentTime.substring(8, 10) + "/");
         tvBig.setText(currentTime.substring(5, 7) + "/");
         tvSmall.setText(currentTime.substring(0, 4));
 
         radioGroupTime.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.radio_current) {
+                if(checkedId == R.id.radio_day){
                     String currentTime = DateUtil.getTimeStr();
+                    tvCurrentDay.setText(currentTime.substring(8, 10) + "/");
+                    tvBig.setText(currentTime.substring(5, 7) + "/");
+                    tvSmall.setText(currentTime.substring(0, 4));
+                    if (onModeChangeListener != null) {
+                        onModeChangeListener.onModeChange(Mode.CURRENT_DAY, new Date());
+                    }
+                    setMode(MODE_DAY);
+                }else if (checkedId == R.id.radio_current_month) {
+                    String currentTime = DateUtil.getTimeStr();
+                    tvCurrentDay.setText("");
                     tvBig.setText(currentTime.substring(5, 7) + "/");
                     tvSmall.setText(currentTime.substring(0, 4));
                     if (onModeChangeListener != null) {
@@ -103,6 +122,7 @@ public class TimeSortView extends FrameLayout {
                         yearInt -= 1;
                         year = String.valueOf(yearInt);
                     }
+                    tvCurrentDay.setText("");
                     tvBig.setText(month + "/");
                     tvSmall.setText(year);
                     if (onModeChangeListener != null) {
@@ -118,6 +138,7 @@ public class TimeSortView extends FrameLayout {
                     setMode(MODE_MONTH);
                 } else if (checkedId == R.id.radio_this_year) {
                     String currentTime = DateUtil.getTimeStr();
+                    tvCurrentDay.setText("");
                     tvBig.setText("");
                     tvSmall.setText(currentTime.substring(0, 4));
                     if (onModeChangeListener != null) {
@@ -133,6 +154,7 @@ public class TimeSortView extends FrameLayout {
                     setMode(MODE_YEAR);
                 } else if (checkedId == R.id.radio_recent_year) {
                     String currentTime = DateUtil.getTimeStr();
+                    tvCurrentDay.setText("");
                     tvBig.setText("");
                     tvSmall.setText(currentTime.substring(0, 4));
                     if (onModeChangeListener != null) {
@@ -144,6 +166,7 @@ public class TimeSortView extends FrameLayout {
                         onModeChangeListener.onModeChange(Mode.ALL, new Date());
                     }
                     String currentTime = DateUtil.getTimeStr();
+                    tvCurrentDay.setText("");
                     tvBig.setText("");
                     tvSmall.setText(currentTime.substring(0, 4));
                     setMode(MODE_YEAR);
@@ -154,10 +177,12 @@ public class TimeSortView extends FrameLayout {
         layoutMode.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mode == MODE_MONTH) {
+                if (mode == MODE_YEAR) {
+                    radio_day.setChecked(true);
+                }else if (mode == MODE_MONTH) {
                     radio_this_year.setChecked(true);
                 } else {
-                    radio_current.setChecked(true);
+                    radio_current_month.setChecked(true);
                 }
             }
         });
@@ -165,7 +190,9 @@ public class TimeSortView extends FrameLayout {
         layoutTimeSelect.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mode == MODE_MONTH) {
+                if(mode == MODE_DAY){
+                    showDayPick();
+                }else if (mode == MODE_MONTH) {
                     showMonthPick();
                 } else if (mode == MODE_YEAR) {
                     showYearPick();
@@ -189,7 +216,7 @@ public class TimeSortView extends FrameLayout {
     }
 
     public void setSelectDrawable(int drawable) {
-        radio_current.setBackgroundResource(drawable);
+        radio_current_month.setBackgroundResource(drawable);
         radio_this_year.setBackgroundResource(drawable);
         radio_last_month.setBackgroundResource(drawable);
         radio_recent_year.setBackgroundResource(drawable);
@@ -198,11 +225,17 @@ public class TimeSortView extends FrameLayout {
 
     private void setMode(int mode) {
         this.mode = mode;
-        if (mode == MODE_MONTH) {
+        if (mode == MODE_DAY){
+            tvDay.setTextColor(getResources().getColor(selectColor));
+            tvMonth.setTextColor(getResources().getColor(R.color.auth_color_a4a));
+            tvYear.setTextColor(getResources().getColor(R.color.auth_color_a4a));
+        }else if(mode == MODE_MONTH) {
             tvMonth.setTextColor(getResources().getColor(selectColor));
+            tvDay.setTextColor(getResources().getColor(R.color.auth_color_a4a));
             tvYear.setTextColor(getResources().getColor(R.color.auth_color_a4a));
         } else {
             tvYear.setTextColor(getResources().getColor(selectColor));
+            tvDay.setTextColor(getResources().getColor(R.color.auth_color_a4a));
             tvMonth.setTextColor(getResources().getColor(R.color.auth_color_a4a));
         }
     }
@@ -277,9 +310,47 @@ public class TimeSortView extends FrameLayout {
         }
         monthPickerView.show();
     }
+    private void showDayPick() {
+        if (dayPickerView == null) {
+            Calendar current = Calendar.getInstance();
+            current.setTimeInMillis(DateUtil.getCurrentTimeMillis());
+            dayPickerView = TimeSelectView.getTimePickerWithLimit(mContext, new TimeSelectView.TimerListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    tvCurrentDay.setText(DateUtil.dateToString(date, DateUtil.dateFormat4).substring(8, 10) + "/");
+                    tvBig.setText(DateUtil.dateToString(date, DateUtil.dateFormat4).substring(5, 7) + "/");
+                    tvSmall.setText(DateUtil.dateToString(date, DateUtil.dateFormat4).substring(0, 4));
+                    if (onModeChangeListener != null) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Date newDate = null;
+                        try {
+                            newDate = sdf.parse(tvSmall.getText().toString().trim() + "-"
+                                    + DateUtil.dateToString(date, DateUtil.dateFormat4).substring(5, 7)+ "-"
+                                    + DateUtil.dateToString(date, DateUtil.dateFormat4).substring(8, 10));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        onModeChangeListener.onModeChange(Mode.CURRENT_DAY, newDate);
+                    }
+                }
+
+                @Override
+                public void onCancel() {
+                    dayPickerView.dismiss();
+                }
+
+                @Override
+                public void onConform() {
+                    dayPickerView.returnData();
+                    dayPickerView.dismiss();
+                }
+            }, 1, DateUtil.getCalender("2018-12-01 00:00:00"), current, current);
+        }
+        dayPickerView.show();
+    }
 
     public enum Mode {
-        CURRENT_MONTH, LAST_MONTH, CURRENT_YEAR, RECENT_YEAR, ALL, CUSTOM_MONTH, CUSTOM_YEAR
+        CURRENT_DAY,CURRENT_MONTH, LAST_MONTH, CURRENT_YEAR, RECENT_YEAR, ALL, CUSTOM_MONTH, CUSTOM_YEAR
     }
 
     public interface OnModeChangeListener {

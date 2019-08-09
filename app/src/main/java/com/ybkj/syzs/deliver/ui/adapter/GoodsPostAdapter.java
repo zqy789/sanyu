@@ -36,11 +36,13 @@ public class GoodsPostAdapter extends XBaseAdapter<OrderListRes.ListBean.GoodsBe
         Button button = helper.getView(R.id.btn_entry);
         if (!TextUtils.isEmpty(item.getGoodsPublicCode())) {
             helper.setText(R.id.tv_code, "防伪码：" + item.getGoodsPublicCode());
+            helper.setImageResource(R.id.img_order_check,R.mipmap.order_select);
             button.setText("重新录入防伪码");
             button.setBackgroundResource(R.drawable.shape_grey9_round_stroke);
             button.setTextColor(ResourcesUtil.getColor(R.color.auth_color_999));
         } else {
             helper.setText(R.id.tv_code, "");
+            helper.setImageResource(R.id.img_order_check,R.mipmap.order_no_select);
             button.setText("录入防伪码");
             button.setBackgroundResource(R.drawable.shape_green_round_stroke);
             button.setTextColor(ResourcesUtil.getColor(R.color.project_base_color_green));

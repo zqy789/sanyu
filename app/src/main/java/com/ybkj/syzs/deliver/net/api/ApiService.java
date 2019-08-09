@@ -8,6 +8,7 @@ import com.ybkj.syzs.deliver.bean.request.LoginReq;
 import com.ybkj.syzs.deliver.bean.request.ModifyPassReq;
 import com.ybkj.syzs.deliver.bean.request.ModifyReq;
 import com.ybkj.syzs.deliver.bean.request.OrderListReq;
+import com.ybkj.syzs.deliver.bean.request.OutOfStock;
 import com.ybkj.syzs.deliver.bean.request.PasswordReq;
 import com.ybkj.syzs.deliver.bean.request.PhoneNumberReq;
 import com.ybkj.syzs.deliver.bean.request.ResetPasswordReq;
@@ -22,12 +23,17 @@ import com.ybkj.syzs.deliver.bean.response.PhoneRes;
 import com.ybkj.syzs.deliver.bean.response.SignRes;
 import com.ybkj.syzs.deliver.bean.response.VersionRes;
 
+import org.json.JSONObject;
+
+import java.util.List;
+
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * - @Author:  Yi Shan Xiang
@@ -131,6 +137,16 @@ public interface ApiService {
     @POST("/deliver/order/list")
     Observable<BaseResponse<OrderListRes>> getOrderList(@Body OrderListReq req);
 
+    /**
+     * 订单批量出库
+     *
+     * @param
+     * @param
+     * @return
+     */
+    @POST("/deliver/order/orderShip")
+    Observable<BaseResponse<Object>> outOfStock(@Body OutOfStock outOfStock);
+
 
     /**
      * 验证公码可用性
@@ -153,8 +169,8 @@ public interface ApiService {
     /**
      * 获取订单详情
      */
-    @GET("/deliver/order/detail/{orderNo}")
-    Observable<BaseResponse<OrderDetailRes>> getOrderDetail(@Path("orderNo") String orderNo);
+//    @GET("/deliver/order/detail/{orderNo}")
+//    Observable<BaseResponse<OrderDetailRes>> getOrderDetail(@Path("orderNo") String orderNo);
 
     @POST("/deliver/app/listUserByPhone")
     Observable<BaseResponse<AccountListRes>> getAccountList(@Body AccountListReq req);
@@ -165,4 +181,6 @@ public interface ApiService {
     @GET("/deliver/app/getPhone/{userAccount}")
     Observable<BaseResponse<PhoneRes>> getPhone(@Path("userAccount") String account);
 
+    @GET("/deliver/order/detailExpress/{orderNo}")
+    Observable<BaseResponse<OrderDetailRes>> getDetailExpress(@Path("orderNo") String orderNo);
 }

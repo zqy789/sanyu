@@ -232,8 +232,8 @@
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/base_text_size_11</item>
-        <item name="android:layout_marginLeft">@dimen/base_dimen_5</item>
-        <item name="android:layout_marginRight">@dimen/base_dimen_5</item>
+        <item name="android:layout_marginLeft">@dimen/base_dimen_3</item>
+        <item name="android:layout_marginRight">@dimen/base_dimen_3</item>
         <item name="android:textColor">@drawable/project_base_time_sort_text</item>
         <item name="android:background">@drawable/project_base_time_sort_bg_green</item>
     </style>

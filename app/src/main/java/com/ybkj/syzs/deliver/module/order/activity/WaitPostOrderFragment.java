@@ -45,8 +45,8 @@ public class WaitPostOrderFragment extends BaseMvpFragment<WaitPostOrderPresente
     private int orderStatus;
 
     private OrderListAdapter orderListAdapter;
-    private int timeType = 6;
-    private long time = 1;
+    private int timeType = 7;
+    private long time = new Date().getTime();
 
     public static WaitPostOrderFragment getInstance(int orderStatus) {
         WaitPostOrderFragment fragment = new WaitPostOrderFragment();
@@ -63,7 +63,7 @@ public class WaitPostOrderFragment extends BaseMvpFragment<WaitPostOrderPresente
 
     @Override
     protected void initView() {
-        orderListAdapter = new OrderListAdapter(mContext);
+        orderListAdapter = new OrderListAdapter(mContext,null);
         orderRecycle.setAdapter(orderListAdapter);
 
         View headerView = LayoutInflater.from(mContext).inflate(R.layout.header_order_list, null);
@@ -106,7 +106,9 @@ public class WaitPostOrderFragment extends BaseMvpFragment<WaitPostOrderPresente
         timeSortView.setOnModeChangeListener(new TimeSortView.OnModeChangeListener() {
             @Override
             public void onModeChange(Enum mode, Date date) {
-                if (mode == TimeSortView.Mode.CURRENT_MONTH) {
+                if (mode == TimeSortView.Mode.CURRENT_DAY){
+                    timeType = 7;
+                }else if (mode == TimeSortView.Mode.CURRENT_MONTH) {
                     timeType = 6;
                 } else if (mode == TimeSortView.Mode.LAST_MONTH) {
                     timeType = 1;

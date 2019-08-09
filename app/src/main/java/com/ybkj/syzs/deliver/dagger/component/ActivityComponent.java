@@ -19,6 +19,7 @@ import com.ybkj.syzs.deliver.module.order.activity.OrderDetailActivity;
 import com.ybkj.syzs.deliver.module.order.activity.OrderSearchActivity;
 import com.ybkj.syzs.deliver.module.order.activity.ScanSecurityActivity;
 import com.ybkj.syzs.deliver.module.user.activity.UserInfoActivity;
+import com.ybkj.syzs.deliver.web.BaseWebviewActivity;
 
 import dagger.Component;
 
@@ -60,6 +61,8 @@ public interface ActivityComponent {
     void inject(GoodsPostActivity goodsPostActivity);
 
     void inject(OrderDetailActivity orderDetailActivity);
+
+    void inject(BaseWebviewActivity baseWebviewActivity);
 
     void inject(OrderSearchActivity orderSearchActivity);
 

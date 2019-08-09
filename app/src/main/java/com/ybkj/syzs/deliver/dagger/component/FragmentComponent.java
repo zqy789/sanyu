@@ -10,6 +10,7 @@ import com.ybkj.syzs.deliver.module.auth.activity.AccountBackPsdFragment;
 import com.ybkj.syzs.deliver.module.auth.activity.PhoneBackPsdFragment;
 import com.ybkj.syzs.deliver.module.order.activity.PostedOrderFragment;
 import com.ybkj.syzs.deliver.module.order.activity.WaitPostOrderFragment;
+import com.ybkj.syzs.deliver.module.order.activity.WaitStockOrderFragment;
 
 import dagger.Component;
 
@@ -29,6 +30,8 @@ public interface FragmentComponent {
     void inject(PostedOrderFragment postedOrderFragment);
 
     void inject(WaitPostOrderFragment waitPostOrderFragment);
+
+    void inject(WaitStockOrderFragment waitStockOrderFragment);
 
     void inject(AccountBackPsdFragment accountBackPsdFragment);
 

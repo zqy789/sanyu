@@ -48,8 +48,10 @@
     <color name="project_base_color_background1">#f5f5f5</color>
     <color name="project_base_color_background_f4">#f4f4f4</color>
     <color name="auth_btn_enable_false">#afe2c4</color>
-
+    <!--订单已发货颜色-->
     <color name="order_status_orange">#FF7E35</color>
+    <!--订单待发货颜色-->
+    <color name="order_status_red">#FF5B4A</color>
 
     <color name="scan_bg">#cc12111A</color>
     <color name="auth_color_warning">#F3B631</color>

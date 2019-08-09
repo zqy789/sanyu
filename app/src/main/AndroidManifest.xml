@@ -112,6 +112,7 @@
         <activity android:name=".module.auth.activity.ResetPasswordActivity" />
         <activity android:name=".module.auth.activity.AccountChoseActivity" />
         <activity android:name=".module.auth.activity.ForgetPasswordActivity" />
+        <activity android:name="com.ybkj.syzs.deliver.web.BaseWebviewActivity" />
     </application>
 
 </manifest>

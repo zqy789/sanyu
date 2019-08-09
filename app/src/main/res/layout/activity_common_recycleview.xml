@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/project_base_color_background1"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_index_action_bar"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_dimen_50">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="@dimen/base_dimen_50"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@mipmap/back_wight" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="订单详情"
+                android:textColor="@color/base_white"
+                android:textSize="@dimen/base_text_size_18" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.ybkj.syzs.deliver.ui.view.recyclerview.XRecyclerView
+        android:id="@+id/order_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/base_dimen_10"
+        android:layout_below="@+id/layout_head"
+        android:background="@drawable/project_base_white_angle8"
+        android:paddingLeft="@dimen/base_dimen_15"
+        android:paddingRight="@dimen/base_dimen_15" />
+</RelativeLayout>

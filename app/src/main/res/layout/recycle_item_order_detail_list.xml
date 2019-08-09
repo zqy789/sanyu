@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/layout_express"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_head"
+        android:layout_marginTop="@dimen/base_dimen_10"
+        android:layout_marginBottom="@dimen/base_dimen_10"
+        android:background="@drawable/project_base_white_angle8"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/auth_common_text3"
+            android:text="快递信息" />
+
+        <TextView
+            android:id="@+id/tv_express_name"
+            style="@style/auth_common_text9_small"
+            android:layout_marginTop="@dimen/base_dimen_14" />
+
+        <TextView
+            android:id="@+id/tv_express_n0"
+            style="@style/auth_common_text9_small"
+            android:layout_marginTop="@dimen/base_dimen_4" />
+
+        <TextView
+            android:id="@+id/tv_poster"
+            style="@style/auth_common_text9_small"
+            android:layout_marginTop="@dimen/base_dimen_4" />
+
+        <TextView
+            android:id="@+id/tv_post_time"
+            style="@style/auth_common_text9_small"
+            android:layout_marginTop="@dimen/base_dimen_4" />
+    </LinearLayout>
+
+    <com.ybkj.syzs.deliver.ui.view.recyclerview.XRecyclerView
+        android:id="@+id/order_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_express"
+        android:background="@drawable/project_base_white_angle8" />
+
+</RelativeLayout>

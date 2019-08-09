@@ -28,6 +28,6 @@ public class OrderDetailPresenter extends BaseRxPresenter<IOrderDetailView> {
     }
 
     public void getOrderDetail(String orderNo) {
-        sendHttpRequest(apiService.getOrderDetail(orderNo), Constants.REQUEST_CODE_1);
+        sendHttpRequest(apiService.getDetailExpress(orderNo), Constants.REQUEST_CODE_1);
     }
 }

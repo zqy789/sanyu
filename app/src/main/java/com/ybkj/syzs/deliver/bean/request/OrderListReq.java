@@ -11,7 +11,7 @@ public class OrderListReq {
     private int pageNum;
     private int pageSize = 20;
     private int orderStatus;
-    private int queryType = 5;
+    private int queryType = 8;
     private String key = "";
 
     public long getStartTimestamp() {

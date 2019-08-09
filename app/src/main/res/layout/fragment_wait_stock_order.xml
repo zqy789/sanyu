@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<com.ybkj.syzs.deliver.ui.view.BackToTopLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:id="@+id/shop_goods_layout"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--app:yb_recyclerViewId="@id/order_recycle">-->
+
+<!----><!--</com.ybkj.syzs.deliver.ui.view.BackToTopLayout>-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true">
+
+    <com.ybkj.syzs.deliver.ui.view.TimeSortView
+        android:id="@+id/timeSortView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.ybkj.syzs.deliver.ui.view.refreshlayout.XRefreshLayout
+        android:id="@+id/order_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/timeSortView">
+
+        <com.ybkj.syzs.deliver.ui.view.recyclerview.XRecyclerView
+            android:id="@+id/order_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.ybkj.syzs.deliver.ui.view.refreshlayout.XRefreshLayout>
+    <RelativeLayout
+        android:id="@+id/rel_out_of_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white">
+        <Button
+            android:id="@+id/btn_post"
+            style="@style/auth_common_btn"
+            android:layout_width="170dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/base_dimen_5"
+            android:text="出库" />
+    </RelativeLayout>
+
+</RelativeLayout>

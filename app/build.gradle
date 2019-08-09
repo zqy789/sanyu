@@ -6,8 +6,8 @@ android {
         applicationId "com.ybkj.syzs.deliver"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 7
-        versionName "1.0.6"
+        versionCode 8
+        versionName "1.0.7"
         flavorDimensions "20"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //设计稿上的屏幕宽度
@@ -72,10 +72,14 @@ android {
             //远程服务器类型(1:正式服；2：外网测试服；3：本地测试服)
             buildConfigField "int", "SERVER_TYPE", "3"
             //         buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.12.74:18084\""
-            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.4.104:18084\""
+//            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.4.104:18084\""
             //           buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.4.216:18084\""
+//            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.1.112:18084\""//测试服务器
+//            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.1.167:18084\""//燕飞
+//            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.1.249:18084\""//陈阳
+//            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.1.194:18084\""//石盾
+            buildConfigField "String", "SERVER_ADDRESS", "\"http://192.168.1.151:18084\""//测试服务器
         }
-
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

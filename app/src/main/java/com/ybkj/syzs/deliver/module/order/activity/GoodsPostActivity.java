@@ -56,6 +56,7 @@ public class GoodsPostActivity extends BaseMvpActivity<GoodsPostPresenter> imple
     Button btnPost;
     TextView tvOrderNo;
     TextView tvStatus;
+    TextView tvOrderNumber;
     TextView tvAddTime;
     private OrderListRes.ListBean order;
     private GoodsPostAdapter goodsAdapter;
@@ -90,12 +91,13 @@ public class GoodsPostActivity extends BaseMvpActivity<GoodsPostPresenter> imple
         View headerView = LayoutInflater.from(mContext).inflate(R.layout.order_good_header, null);
         tvOrderNo = headerView.findViewById(R.id.tv_order_no);
         tvStatus = headerView.findViewById(R.id.tv_status);
+        tvOrderNumber = headerView.findViewById(R.id.tv_order_number);
         tvAddTime = headerView.findViewById(R.id.tv_add_time);
         goodsAdapter.addHeaderView(headerView);
 
         tvOrderNo.setText("订单号：" + order.getOrderNo());
         tvAddTime.setText("下单时间：" + DateUtil.longToTimeStr(order.getAddTime(), DateUtil.dateFormat2));
-
+        tvOrderNumber.setText("共"+order.getGoods().size()+"件商品");
 
         goodsAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
